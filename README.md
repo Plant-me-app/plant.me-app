@@ -1,4 +1,4 @@
-# Plant.Me API
+# PLANT.ME API
 
 
 ## Objetivo
