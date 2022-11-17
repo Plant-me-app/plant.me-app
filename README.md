@@ -1,9 +1,9 @@
-# PLANT.ME API
+# PLANT.ME APP
 
 
 ## Objetivo
 
-Esse repositório é responsável por armazenar o código da API do aplicativo PLANT.ME.
+Esse repositório é responsável por armazenar o código do aplicativo PLANT.ME.
 
 
 ## Como contribuir
