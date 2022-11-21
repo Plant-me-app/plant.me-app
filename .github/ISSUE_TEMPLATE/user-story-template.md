@@ -12,5 +12,7 @@ assignees: ''
 #### Protótipo
 
 ### Regra de Negócio
+- Deverá seguir o layout do protótipo
 
 ### Critérios de Aceite
+- [ ] O layout está de acordo com o protótipo
