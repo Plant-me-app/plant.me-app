@@ -43,6 +43,7 @@ export const fontStyles = StyleSheet.create({
         fontSize: FontSize.x_large,
         fontWeight: "400",
         letterSpacing: 3,
+        // fontFamily: 'Montserrat-Bold'
     },
       
     subtitle: {
