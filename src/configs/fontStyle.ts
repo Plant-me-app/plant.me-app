@@ -22,13 +22,13 @@ export const fontStyles = StyleSheet.create({
     },
     
     link: {
-        fontSize: FontSize.x_small,
+        fontSize: FontSize.xSmall,
         fontWeight: "600",
         letterSpacing: 3,
     },
     
     header: {
-        fontSize: FontSize.xxx_large,
+        fontSize: FontSize.xxxLarge,
         fontWeight: "700",
         letterSpacing: 3,
     },
@@ -40,14 +40,19 @@ export const fontStyles = StyleSheet.create({
     },
     
     button: {
-        fontSize: FontSize.x_large,
+        fontSize: FontSize.xLarge,
         fontWeight: "400",
         letterSpacing: 3,
-        // fontFamily: 'Montserrat-Bold'
+    },
+
+    smallButton: {
+        fontSize: FontSize.xSmall,
+        fontWeight: "400",
+        letterSpacing: 1,
     },
       
     subtitle: {
-        fontSize: FontSize.xx_small,
+        fontSize: FontSize.xxSmall,
         fontWeight: "400",
         letterSpacing: 3,
     },

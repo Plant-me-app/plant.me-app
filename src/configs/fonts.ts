@@ -1,14 +1,14 @@
 import {Colors} from './colors';
 
 export const FontSize = {
-    xx_small: 12,
-    x_small: 14,
+    xxSmall: 12,
+    xSmall: 14,
     small: 16,
     medium: 20,
     large: 20,
-    x_large: 22,
-    xx_large: 24,
-    xxx_large: 32
+    xLarge: 22,
+    xxLarge: 24,
+    xxxLarge: 32
 }
 
 export const FontWeight = {
