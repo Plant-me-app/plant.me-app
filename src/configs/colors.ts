@@ -3,7 +3,7 @@ export const Colors = {
     dark: '#000000',
     green_android: '#A7C957',
     green_sap: '#4F772D',
-    green_hunder: '#31572C',
+    green_hunter: '#31572C',
     green_phthalo: '#132A13',
     alburn: '#9E2A2B',
     grey_light: '#F2F2F2',
