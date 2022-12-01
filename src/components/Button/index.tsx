@@ -1,10 +1,15 @@
 import React from "react";
 import { TouchableOpacity, Text } from "react-native";
 import { styles } from "./styles";
-import { buttonTypes } from "../../constants/buttonsTypes";
+import { buttonTypes } from "../../constants/buttonsTypes.enum";
 
+interface IButton {
+    title: string;
+    type?: string;
+    onPress: () => void;
+}
 
-const Button = ({onPress, title, type = buttonTypes.Primary}): React.ReactElement => {
+const Button = ({title, type = buttonTypes.Primary, onPress}: IButton): React.ReactElement => {
     const buttonType = {
         [buttonTypes.Primary]: styles.primaryButton,
         [buttonTypes.Secondary]: styles.secondaryButton,

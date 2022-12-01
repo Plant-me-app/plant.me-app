@@ -16,6 +16,8 @@ export const styles = StyleSheet.create({
         height: 45,
         backgroundColor: Colors.white,
         borderRadius: 8,
+        borderWidth: 2,
+        borderColor: Colors.green_sap,
         justifyContent: 'center'
     },
 
@@ -32,6 +34,8 @@ export const styles = StyleSheet.create({
         height: 26,
         backgroundColor: Colors.white,
         borderRadius: 8,
+        borderWidth: 1,
+        borderColor: Colors.green_sap,
         justifyContent: 'center'
     },
 
@@ -51,7 +55,7 @@ export const styles = StyleSheet.create({
 
     secondaryText: {
         ...fontStyles.button,
-        color: Colors.green_hunder,
+        color: Colors.green_hunter,
         textAlign: 'center',
     },
 
@@ -63,7 +67,7 @@ export const styles = StyleSheet.create({
 
     secondarySmallText: {
         ...fontStyles.smallButton,
-        color: Colors.green_hunder,
+        color: Colors.green_hunter,
         textAlign: 'center',
     },
 

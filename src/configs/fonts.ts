@@ -10,11 +10,3 @@ export const FontSize = {
     xxLarge: 24,
     xxxLarge: 32
 }
-
-export const FontWeight = {
-    light: "300",
-    regular: "regular",
-    medium: "500",
-    semi_bold: "600",
-    bold: "700",
-}

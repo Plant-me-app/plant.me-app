@@ -2,7 +2,7 @@ import React from 'react';
 import CenterView from '../CenterView';
 import Button from '../../../src/components/Button/index';
 import { storiesOf } from '@storybook/react-native';
-import { buttonTypes } from '../../../src/constants/buttonsTypes';
+import { buttonTypes } from '../../../src/constants/buttonsTypes.enum';
 
 storiesOf('Button', module)
   .addDecorator((getStory) => <CenterView>{getStory()}</CenterView>)
