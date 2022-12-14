@@ -1,17 +1,18 @@
 import { StyleSheet } from "react-native";
 import { Colors } from "../../configs/colors";
+import { Size } from "../../configs/sizes";
 
 export const styles = StyleSheet.create({
     leafButton: {
-        width: 37,
-        height: 37,
-        borderRadius: 30,
+        width: Size.SIZE_38,
+        height: Size.SIZE_38,
+        borderRadius: Size.SIZE_30,
         justifyContent: 'center',
         alignItems: 'center'
     },
 
     leafIcon: { 
-        width: 15, 
-        height: 16.5
+        width: Size.SIZE_16, 
+        height: Size.SIZE_18
     }
 })

@@ -8,21 +8,21 @@ import NewPlantView from "../../../views/NewPlantView";
 import NotificationView from "../../../views/NotificationsView";
 import ProfileView from "../../../views/ProfileView";
 import LeafButton from "../../../components/LeafButton";
+import { Size } from "../../../configs/sizes";
 
 const Tab = createBottomTabNavigator();
 
 const TabNavigator = (): React.ReactElement => {
   return (
-    <Tab.Navigator>
+    <Tab.Navigator screenOptions={{ tabBarShowLabel: false }}>
       <Tab.Screen
         name="Home"
         component={HomeView}
         options={{
-          tabBarShowLabel: false,
           tabBarIcon: ({ focused }) => (
             <MaterialIcons
               name="home-filled"
-              size={26}
+              size={Size.SIZE_36}
               color={focused ? Colors.green_android : Colors.green_hunter}
             />
           ),
@@ -32,11 +32,10 @@ const TabNavigator = (): React.ReactElement => {
         name="Notificações"
         component={NotificationView}
         options={{
-          tabBarShowLabel: false,
           tabBarIcon: ({ focused }) => (
             <Ionicons
               name="notifications-sharp"
-              size={26}
+              size={Size.SIZE_30}
               color={focused ? Colors.green_android : Colors.green_hunter}
             />
           ),
@@ -46,11 +45,10 @@ const TabNavigator = (): React.ReactElement => {
         name="Perfil"
         component={ProfileView}
         options={{
-          tabBarShowLabel: false,
           tabBarIcon: ({ focused }) => (
             <FontAwesome5
               name="user-alt"
-              size={24}
+              size={Size.SIZE_28}
               color={focused ? Colors.green_android : Colors.green_hunter}
             />
           ),
@@ -60,7 +58,6 @@ const TabNavigator = (): React.ReactElement => {
         name="New Plant"
         component={NewPlantView}
         options={{
-          tabBarShowLabel: false,
           tabBarIcon: ({ focused }) => <LeafButton isFocused={focused} />,
         }}
       />

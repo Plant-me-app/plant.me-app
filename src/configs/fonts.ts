@@ -1,5 +1,3 @@
-import {Colors} from './colors';
-
 export const FontSize = {
     xxSmall: 12,
     xSmall: 14,
