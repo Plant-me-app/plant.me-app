@@ -1,13 +1,14 @@
 import React from 'react';
-import CenterView from '../CenterView';
-import NavigationTab from '../../../src/components/NavigationTab';
-import LeafButton from '../../../src/components/NavigationTab/LeafButton';
+import LeafButton from '../../../src/components/LeafButton';
+import RootNavigator from '../../../src/routes/navigation/rootNavigator';
 import { storiesOf } from '@storybook/react-native';
+import style from './style';
+import { View } from 'react-native';
 
 storiesOf('NavigationTab', module)
-  .addDecorator((getStory) => <CenterView>{getStory()}</CenterView>)
+  .addDecorator((getStory) => <View style={style.tab}>{getStory()}</View>)
   .add('NavigationTab', () => (
-    <NavigationTab />
+    <RootNavigator />
   ))
   .add('AddPlantButton', () => (
     <LeafButton />
