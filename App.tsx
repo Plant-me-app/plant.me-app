@@ -1,28 +1,26 @@
-// import { StatusBar } from 'expo-status-bar';
-// import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View } from "react-native";
+import RootNavigator from "./src/routes/navigation/rootNavigator";
 
-// export default function App() {
-//   return (
-//     <View style={styles.container}>
-//       <Text>hey</Text>
-//       <StatusBar style="auto" />
-//     </View>
-//   );
-// }
-
-// const styles = StyleSheet.create({
-//   container: {
-//     flex: 1,
-//     backgroundColor: '#fff',
-//     alignItems: 'center',
-//     justifyContent: 'center',
-//   },
-// });
-
-
-import * as React from 'react';
-import StorybookUIRoot from './storybook';
-
-export default function LinksScreen() {
-  return <StorybookUIRoot />;
+export default function App() {
+  return <RootNavigator />;
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: "#fff",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+});
+
+/**
+ * Storybook
+ */
+
+// import * as React from 'react';
+// import StorybookUIRoot from './storybook';
+
+// export default function LinksScreen() {
+//   return <StorybookUIRoot />;
+// }

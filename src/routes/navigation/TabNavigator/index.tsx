@@ -14,7 +14,9 @@ const Tab = createBottomTabNavigator();
 
 const TabNavigator = (): React.ReactElement => {
   return (
-    <Tab.Navigator screenOptions={{ tabBarShowLabel: false }}>
+    <Tab.Navigator
+      screenOptions={{ tabBarShowLabel: false, headerShown: false }}
+    >
       <Tab.Screen
         name="Home"
         component={HomeView}
