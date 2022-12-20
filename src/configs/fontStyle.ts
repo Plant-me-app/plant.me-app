@@ -13,6 +13,12 @@ export const fontStyles = StyleSheet.create({
         fontWeight: "600",
         letterSpacing: 3
     },
+
+    textInput: {
+        fontSize: FontSize.small,
+        fontWeight: "700",
+        letterSpacing: 1
+    },
     
     modal: {
         fontSize: FontSize.xSmall,

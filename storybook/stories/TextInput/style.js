@@ -1,8 +1,8 @@
 export default {
-    tab: {
+    input: {
       flex: 1,
       justifyContent: 'center',
-      backgroundColor: '#F5FCFF'
+      backgroundColor: '#FFFFFF'
     },
   };
   
