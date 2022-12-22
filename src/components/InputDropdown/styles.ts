@@ -1,14 +1,21 @@
 import { StyleSheet } from "react-native";
 import { Colors } from "../../configs/colors";
+import { fontStyles } from "../../configs/fontStyle";
 
 export const styles = StyleSheet.create({
     container: {
-        width: 190,
-        alignSelf: 'center'
+        width: "100%",
+        flexDirection: 'row',
+        justifyContent: 'center',
+    },
+    
+    inputContainer: {
+        width: 250,
+        paddingTop: 24,
     },
 
     dropDownContainer: {
-        padding: 5
+        paddingTop: 5,
     },
 
     itemsContainer: {
@@ -42,5 +49,10 @@ export const styles = StyleSheet.create({
 
     itemText: {
         color: "#222"
+    },
+
+    title: {
+        ...fontStyles.textInput,
+        paddingBottom: 7,
     }
 })
