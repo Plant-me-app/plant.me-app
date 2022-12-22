@@ -1,26 +1,17 @@
 import { StyleSheet, Text, View } from "react-native";
 import RootNavigator from "./src/routes/navigation/rootNavigator";
+import * as React from "react";
+import StorybookUIRoot from "./storybook";
 
 export default function App() {
-  return <RootNavigator />;
+  return <StorybookUIRoot />;
+  // return <RootNavigator />;
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-});
+function Storybook() {
+  return <StorybookUIRoot />;
+}
 
-/**
- * Storybook
- */
-
-// import * as React from 'react';
-// import StorybookUIRoot from './storybook';
-
-// export default function LinksScreen() {
-//   return <StorybookUIRoot />;
-// }
+function Home() {
+  return <RootNavigator />;
+}
