@@ -8,6 +8,10 @@ export const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: Colors.green_hunter
     },
+    buttonContainer: {
+        marginTop: 100,
+        alignSelf: 'center'
+    },
     body: {
         flex: 1,
         backgroundColor: Colors.white,
