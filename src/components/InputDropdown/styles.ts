@@ -1,21 +1,29 @@
 import { StyleSheet } from "react-native";
 import { Colors } from "../../configs/colors";
 import { fontStyles } from "../../configs/fontStyle";
+import {
+    widthPercentageToDP as wp,
+    heightPercentageToDP as hp,
+} from "react-native-responsive-screen";
 
 export const styles = StyleSheet.create({
+    wrappedContainer: {
+        flex: 1
+    },
+
     container: {
-        width: "100%",
+        width: wp('100%'),
         flexDirection: 'row',
         justifyContent: 'center',
     },
     
     inputContainer: {
-        width: 250,
-        paddingTop: 24,
+        width: wp('70%'),
+        paddingTop: hp('3%'),
     },
 
     dropDownContainer: {
-        paddingTop: 5,
+        paddingTop: hp('1%'),
     },
 
     itemsContainer: {
@@ -23,16 +31,15 @@ export const styles = StyleSheet.create({
     },
 
     input: {
-        height: 41,
-        width: 250,
-        padding: 10,
+        height: hp('%5'),
+        width: wp('70%'),
         backgroundColor: Colors.grey_light,
         borderRadius: 8
     },
 
     item: {
-        padding: 12,
-        marginTop: 3,
+        padding: hp('1.5%'),
+        marginTop: hp('0.2%'),
         backgroundColor: "#F2F2F2",
         borderColor: "#F2F2F2",
         borderWidth: 1,
@@ -40,7 +47,7 @@ export const styles = StyleSheet.create({
     },
 
     dropDownSearch: {
-        padding: 12,
+        padding: hp('1.5%'),
         borderWidth: 1,
         backgroundColor: "#F2F2F2",
         borderColor: "#F2F2F2",
@@ -53,6 +60,12 @@ export const styles = StyleSheet.create({
 
     title: {
         ...fontStyles.textInput,
-        paddingBottom: 7,
+        fontSize: wp('4%'),
+        paddingBottom: hp('1.5%'),
+    },
+
+    headerTitle: {
+        ...fontStyles.header,
+        color: Colors.white,
     }
 })

@@ -1,10 +1,10 @@
 import React from "react";
-import { View, Text } from "react-native";
+import { View, Text, useWindowDimensions } from "react-native";
 import SearchableDropdown from "react-native-searchable-dropdown";
 import { styles } from "./styles";
 
 interface IDropdown {
-  items: [];
+  items;
   placeholder: string;
   onSelect?: (item) => void;
   itemSelected?: {};
@@ -34,6 +34,7 @@ const InputDropdown = ({
             placeholder: placeholder,
             underlineColorAndroid: "transparent",
             style: styles.dropDownSearch,
+            showSoftInputOnFocus: false,
           }}
           listProps={{
             nestedScrollEnabled: true,
