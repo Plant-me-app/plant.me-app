@@ -1,0 +1,182 @@
+[
+    {
+        "name":"Costela de adão",
+        "water":{
+            "amount":1,
+            "cicle":"semanal"
+        },
+        "soil":{
+            "amount":1,
+            "cicle":"anual",
+            "season":"Janeiro - Dezembro"
+        },
+        "fertilization":{
+            "amount":1,
+            "cicle":"mensal",
+            "season":"Outubro - Março"
+        },
+        "light":"Indireta"
+    },
+    {
+        "name":"Samambaia",
+        "water":{
+            "amount":1,
+            "cicle":"diário"
+        },
+        "soil":{
+            "amount":1,
+            "cicle":"anual",
+            "season":"Janeiro - Dezembro"
+        },
+        "fertilization":{
+            "amount":1,
+            "cicle":"mensal",
+            "season":"Janeiro - Dezembro"
+        },
+        "light":"Indireta"
+    },
+    {
+        "name":"Espada de São Jorge",
+        "water":{
+            "amount":1,
+            "cicle":"quinzenal"
+        },
+        "soil":{
+            "amount":1,
+            "cicle":"anual",
+            "season":"Maio - Julho"
+        },
+        "fertilization":{
+            "amount":1,
+            "cicle":"mensal",
+            "season":"Outubro - Março"
+        },
+        "light":"Indireta"
+    },
+    {
+        "name":"Yucca",
+        "water":{
+            "amount":1,
+            "cicle":"mensal"
+        },
+        "soil":{
+            "amount":1,
+            "cicle":"anual",
+            "season":"Janeiro - Dezembro"
+        },
+        "fertilization":{
+            "amount":1,
+            "cicle":"anual",
+            "season":"Outubro - Março"
+        },
+        "light":"5h"
+    },
+    {
+        "name":"Suculenta",
+        "water":{
+            "amount":1,
+            "cicle":"quinzenal"
+        },
+        "soil":{
+            "amount":1,
+            "cicle":"anual",
+            "season":"Janeiro - Dezembro"
+        },
+        "fertilization":{
+            "amount":1,
+            "cicle":"trimestral",
+            "season":"Janeiro - Dezembro"
+        },
+        "light":"4h"
+    },
+    {
+        "name":"Cacto",
+        "water":{
+            "amount":1,
+            "cicle":"mensal"
+        },
+        "soil":{
+            "amount":1,
+            "cicle":"anual",
+            "season":"Janeiro - Dezembro"
+        },
+        "fertilization":{
+            "amount":1,
+            "cicle":"mensal",
+            "season":"Janeiro - Dezembro"
+        },
+        "light":"Direta"
+    },
+    {
+        "name":"Lírio da Paz",
+        "water":{
+            "amount":3,
+            "cicle":"semanal"
+        },
+        "soil":{
+            "amount":1,
+            "cicle":"anual",
+            "season":"Janeiro - Dezembro"
+        },
+        "fertilization":{
+            "amount":1,
+            "cicle":"mensal",
+            "season":"Outubro - Março"
+        },
+        "light":"Indireta"
+    },
+    {
+        "name":"Fitônia",
+        "water":{
+            "amount":2,
+            "cicle":"semanal"
+        },
+        "soil":{
+            "amount":1,
+            "cicle":"anual",
+            "season":"Janeiro - Dezembro"
+        },
+        "fertilization":{
+            "amount":1,
+            "cicle":"trimestral",
+            "season":"Janeiro - Dezembro"
+        },
+        "light":"Indireta"
+    },
+    {
+        "name":"Dracena",
+        "water":{
+            "amount":2,
+            "cicle":"semanal"
+        },
+        "soil":{
+            "amount":1,
+            "cicle":"anual",
+            "season":"Janeiro - Dezembro"
+        },
+        "fertilization":{
+            "amount":1,
+            "cicle":"mensal",
+            "season":"Outubro - Março"
+        },
+        "light":"3h"
+    },
+    {
+        "name":"Planta Jade",
+        "water":{
+            "amount":3,
+            "cicle":"semanal"
+        },
+        "soil":{
+            "amount":1,
+            "cicle":"trimestral",
+            "season":"Janeiro - Dezembro"
+        },
+        "fertilization":{
+            "amount":1,
+            "cicle":"trimestral",
+            "season":"Janeiro - Dezembro"
+        },
+        "light":"Direta"
+    }
+]
