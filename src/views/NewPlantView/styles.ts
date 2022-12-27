@@ -2,14 +2,18 @@ import { StyleSheet } from "react-native";
 import { Colors } from "../../configs/colors";
 import { fontStyles } from "../../configs/fontStyle";
 import { Size } from "../../configs/sizes";
+import { heightPercentageToDP as hp } from "react-native-responsive-screen";
 
 export const styles = StyleSheet.create({
+    containerView: {
+        flex: 1,
+    },
     container: {
         flex: 1,
         backgroundColor: Colors.green_hunter
     },
     buttonContainer: {
-        marginTop: 100,
+        marginTop: hp('10%'),
         alignSelf: 'center'
     },
     body: {
@@ -19,15 +23,15 @@ export const styles = StyleSheet.create({
         borderTopRightRadius: Size.SIZE_20,
     },
     header: {
-        height: 150,
         flexDirection: 'row',
         justifyContent: 'center',
-        alignItems: 'center'
+        alignItems: 'center',
+        height: hp("15%")
     },
     headerTitle: {
         ...fontStyles.header,
         color: Colors.white,
-        fontSize: Size.SIZE_40,
-        paddingTop: 50
+        paddingTop: hp("3%"),
+        fontSize: hp("4%"),
     }
 })

@@ -1,13 +1,21 @@
 import { StyleSheet } from "react-native";
 import { Colors } from "../../configs/colors";
 import { fontStyles } from "../../configs/fontStyle";
+import {
+  widthPercentageToDP as wp,
+  heightPercentageToDP as hp,
+} from "react-native-responsive-screen";
 
 export const styles = StyleSheet.create({
+    wrappedContainer: {
+      flex: 1,
+    },
+
     container: {
-      width: "100%",
+      width: wp('100%'),
       flexDirection: 'row',
       justifyContent: 'center',
-      paddingTop: 156
+      paddingTop: hp('5%')
     },
     
     inputContainer: {
@@ -16,15 +24,16 @@ export const styles = StyleSheet.create({
     },
 
     input: {
-        height: 41,
-        width: 250,
-        padding: 10,
+        height: hp('5%'),
+        width: wp('70%'),
+        padding: wp('3%'),
         backgroundColor: Colors.grey_light,
         borderRadius: 8
       },
 
     title: {
       ...fontStyles.textInput,
-      paddingBottom: 7,
+      fontSize: wp('4%'),
+      paddingBottom: hp('1.5%'),
     }
 })

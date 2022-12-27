@@ -10,7 +10,7 @@ const PlantImage = (): React.ReactElement => {
       onPress={() => console.log("pressed")}
       style={styles.container}
     >
-      <Image source={NoPlantSelected} />
+      <Image source={NoPlantSelected} style={styles.image} />
       <View style={styles.pencilContainer}>
         <Image source={Pencil} style={styles.pencil} />
       </View>
