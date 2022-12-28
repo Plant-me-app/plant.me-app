@@ -17,6 +17,16 @@ export const styles = StyleSheet.create({
         alignSelf: 'center',
         marginTop: hp('5%')
     },
+    containerSelected: {
+        width: hp('12%'),
+        height: hp('12%'),
+        backgroundColor: 'rgba(167, 201, 87, 0.21)',
+        borderRadius: 70,
+        justifyContent: 'center',
+        alignItems: 'center',
+        alignSelf: 'center',
+        marginTop: hp('5%')
+    },
     pencilContainer: {
         position: 'relative',
         left: wp('7%'),
@@ -30,6 +40,11 @@ export const styles = StyleSheet.create({
     },
     image: {
         width: wp('12%'),
+        height: hp('9%'),
+        top: hp('1.5%'),
+    },
+    imageSelected: {
+        width: wp('15%'),
         height: hp('9%'),
         top: hp('1.5%'),
     },
