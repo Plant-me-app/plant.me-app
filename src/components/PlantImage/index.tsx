@@ -1,16 +1,27 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Image, TouchableOpacity, View } from "react-native";
+import { Avatars } from "../AvatarModal/Avatars";
 import { styles } from "./styles";
 
 const NoPlantSelected = require("../../images/NoImgSelected.png");
 const Pencil = require("../../images/Pencil.png");
-const PlantImage = (): React.ReactElement => {
+
+interface PlantImage {
+  onPress: () => void;
+  avatar?: string;
+}
+const PlantImage = ({ onPress, avatar }): React.ReactElement => {
+  const seleted = avatar ?? NoPlantSelected;
+
   return (
     <TouchableOpacity
-      onPress={() => console.log("pressed")}
-      style={styles.container}
+      onPress={onPress}
+      style={avatar ? styles.containerSelected : styles.container}
     >
-      <Image source={NoPlantSelected} style={styles.image} />
+      <Image
+        source={seleted}
+        style={avatar ? styles.imageSelected : styles.image}
+      />
       <View style={styles.pencilContainer}>
         <Image source={Pencil} style={styles.pencil} />
       </View>
