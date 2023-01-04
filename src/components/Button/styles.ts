@@ -29,6 +29,14 @@ export const styles = StyleSheet.create({
         justifyContent: 'center'
     },
 
+    disabledPrimarySmallButton: {
+        width: 103,
+        height: 26,
+        backgroundColor: Colors.grey,
+        borderRadius: 8,
+        justifyContent: 'center'
+    },
+
     secondarySmallButton: {
         width: 103,
         height: 26,

@@ -4,8 +4,13 @@ import { styles } from "./styles";
 import PlantImage from "../PlantImage";
 import { Backdrop } from "react-native-backdrop";
 import { Avatars } from "./Avatars";
+import { IPlantImage } from "../../constants/plant.interface";
 
-const AvatarModal = (): React.ReactElement => {
+interface IAvatarModal {
+  onChangeImage?: (item) => void;
+}
+
+const AvatarModal = ({ onChangeImage }: IAvatarModal): React.ReactElement => {
   const [visible, setVisible] = useState(false);
   const [img, setImg] = useState(null);
 
@@ -25,6 +30,7 @@ const AvatarModal = (): React.ReactElement => {
           onPress={() => {
             setImg(avatar.img);
             setVisible(false);
+            onChangeImage(avatar);
           }}
         >
           <Image source={avatar.img} style={styles.image} />

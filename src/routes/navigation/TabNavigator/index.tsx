@@ -15,7 +15,10 @@ const Tab = createBottomTabNavigator();
 const TabNavigator = (): React.ReactElement => {
   return (
     <Tab.Navigator
-      screenOptions={{ tabBarShowLabel: false, headerShown: false }}
+      screenOptions={{
+        tabBarShowLabel: false,
+        headerShown: false,
+      }}
     >
       <Tab.Screen
         name="Home"
@@ -61,6 +64,7 @@ const TabNavigator = (): React.ReactElement => {
         component={NewPlantView}
         options={{
           tabBarIcon: ({ focused }) => <LeafButton isFocused={focused} />,
+          unmountOnBlur: true,
         }}
       />
     </Tab.Navigator>

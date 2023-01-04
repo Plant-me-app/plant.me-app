@@ -3,5 +3,6 @@ export enum buttonTypes {
     Secondary = 'secondary',
     SmallPrimary = 'smallPrimary',
     SmallSecondary = 'smallSecondary',
-    SmallDanger = 'smallDanger'
+    SmallDanger = 'smallDanger',
+    DisabledSmallPrimary = 'disabledSmallPrimary'
 }
