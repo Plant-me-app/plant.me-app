@@ -1,11 +1,15 @@
 import React from "react";
-import { Text } from "react-native";
+import { Text, View } from "react-native";
+import { styles } from "./styles";
 
 const HomeView = (): React.ReactElement => {
-
-    return (
-        <Text>Home</Text>
-    );
+  return (
+    <View style={styles.container}>
+      <View style={styles.header}>
+        <Text style={styles.headerTitle}>Minhas Plantas</Text>
+      </View>
+    </View>
+  );
 };
 
 export default HomeView;
