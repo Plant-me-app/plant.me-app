@@ -14,6 +14,7 @@ import Button from "../../components/Button";
 import InputDropdown from "../../components/InputDropdown";
 import InputText from "../../components/InputText";
 import AvatarModal from "../../components/AvatarModal/AvatarModal";
+import { Labels } from "../../constants/label.constants";
 
 const plants = require("../../../assets/plants.json");
 const plantSize = require("../../../assets/plantSize.json");
@@ -72,7 +73,7 @@ const NewPlantView = ({ navigation }): React.ReactElement => {
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
       <View style={styles.container}>
         <View style={styles.header}>
-          <Text style={styles.headerTitle}>Nova Planta</Text>
+          <Text style={styles.headerTitle}>{Labels.newPlantHeader}</Text>
         </View>
         <View style={styles.body}>
           <AvatarModal onChangeImage={onSelectImage} />
