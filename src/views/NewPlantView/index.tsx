@@ -52,17 +52,16 @@ const NewPlantView = ({ navigation }): React.ReactElement => {
     );
   };
 
-  const onSave = () => {
+  const onSave = async () => {
     setLoading(true);
-    createPlant({
+    await createPlant({
       name: name,
       species: species.name,
       size: size.name,
       image: img.path,
-    }).then(() => {
-      setLoading(false);
-      navigation.navigate("Home");
     });
+    navigation.navigate("Home");
+    setLoading(false);
   };
 
   useEffect(() => {
@@ -108,9 +107,23 @@ const NewPlantView = ({ navigation }): React.ReactElement => {
             />
           </View>
         </View>
-        <View style={{ justifyContent: "center" }}>
-          {loading ?? <ActivityIndicator size="large" />}
-        </View>
+        {loading && (
+          <View
+            style={{
+              position: "absolute",
+              justifyContent: "center",
+              flexDirection: "row",
+              alignItems: "center",
+              left: 0,
+              right: 0,
+              top: 0,
+              bottom: 0,
+              backgroundColor: "rgba(0,0,0,0.1)",
+            }}
+          >
+            {<ActivityIndicator size="large" />}
+          </View>
+        )}
       </View>
     </TouchableWithoutFeedback>
   );
