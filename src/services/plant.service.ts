@@ -10,3 +10,7 @@ export const createPlant = async (plant: IPlant) => {
       }, 500);
     });
 }
+
+export const getPlants = async () => {
+    return await api.get('/plants');
+}
