@@ -1,19 +1,15 @@
 import React, { useEffect, useState } from "react";
-import { Image, Text, View } from "react-native";
+import { Image, ScrollView, Text, View } from "react-native";
+import PlantCard from "../../components/PlantCard";
 import SearchBar from "../../components/SearchBar";
 import { Labels } from "../../constants/label.constants";
 import { getPlants } from "../../services/plant.service";
 import { styles } from "./styles";
 
 const HomeView = ({ navigation }): React.ReactElement => {
-  const emptyScreen = require("../../images/HomeEmpty.png");
-  const arrowDown = require("../../images/ArrowDown.png");
+  const emptyScreen = require("../../assets/images/HomeEmpty.png");
+  const arrowDown = require("../../assets/images/ArrowDown.png");
   const [plants, setPlants] = useState([]);
-
-  const loadPlants = async () => {
-    const result = await getPlants();
-    setPlants(result.data.data);
-  };
 
   useEffect(() => {
     const loadWhenNavigate = navigation.addListener("focus", () => {
@@ -22,6 +18,11 @@ const HomeView = ({ navigation }): React.ReactElement => {
     loadPlants();
     return loadWhenNavigate;
   }, [navigation]);
+
+  const loadPlants = async () => {
+    const result = await getPlants();
+    setPlants(result.data.data);
+  };
 
   return (
     <View style={styles.container}>
@@ -39,6 +40,17 @@ const HomeView = ({ navigation }): React.ReactElement => {
             <Image source={arrowDown} style={styles.arrowIcon} />
           </View>
         </View>
+      )}
+      {plants.length > 0 && (
+        <ScrollView>
+          <View style={styles.body}>
+            <PlantCard />
+            <PlantCard />
+            <PlantCard />
+            <PlantCard />
+            <PlantCard />
+          </View>
+        </ScrollView>
       )}
     </View>
   );

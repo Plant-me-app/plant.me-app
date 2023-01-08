@@ -4,7 +4,7 @@ import { Labels } from "../../constants/label.constants";
 import { styles } from "./styles";
 
 const SearchBar = (): React.ReactElement => {
-  const search = require("../../images/Search.png");
+  const search = require("../../assets/images/Search.png");
 
   return (
     <View style={styles.container}>
