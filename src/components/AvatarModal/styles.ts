@@ -25,7 +25,7 @@ export const styles = StyleSheet.create({
         
     },
     image: {
-        width: wp('20%'),
+        width: wp('23%'),
         height: wp('23%'),
         margin: wp('4%')
     },

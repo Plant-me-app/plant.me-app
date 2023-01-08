@@ -56,9 +56,9 @@ const NewPlantView = ({ navigation }): React.ReactElement => {
     setLoading(true);
     await createPlant({
       name: name,
-      species: species.name,
+      species: species,
       size: size.name,
-      image: img.path,
+      image: img?.img,
     });
     navigation.navigate("Home");
     setLoading(false);

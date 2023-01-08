@@ -4,7 +4,6 @@ import { styles } from "./styles";
 import PlantImage from "../PlantImage";
 import { Backdrop } from "react-native-backdrop";
 import { Avatars } from "./Avatars";
-import { IPlantImage } from "../../constants/plant.interface";
 
 interface IAvatarModal {
   onChangeImage?: (item) => void;
