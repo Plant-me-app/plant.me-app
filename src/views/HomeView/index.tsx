@@ -3,6 +3,7 @@ import { Image, ScrollView, Text, View } from "react-native";
 import PlantCard from "../../components/PlantCard";
 import SearchBar from "../../components/SearchBar";
 import { Labels } from "../../constants/label.constants";
+import { IPlant } from "../../constants/plant.interface";
 import { getPlants } from "../../services/plant.service";
 import { styles } from "./styles";
 
@@ -20,8 +21,14 @@ const HomeView = ({ navigation }): React.ReactElement => {
   }, [navigation]);
 
   const loadPlants = async () => {
-    const result = await getPlants();
-    setPlants(result.data.data);
+    const response = await getPlants();
+    setPlants(response.data.data);
+  };
+
+  const sortByCreatedDate = (a, b) => {
+    let c = new Date(a.createdDate).getTime();
+    let d = new Date(b.createdDate).getTime();
+    return d - c;
   };
 
   return (
@@ -44,11 +51,9 @@ const HomeView = ({ navigation }): React.ReactElement => {
       {plants.length > 0 && (
         <ScrollView>
           <View style={styles.body}>
-            <PlantCard />
-            <PlantCard />
-            <PlantCard />
-            <PlantCard />
-            <PlantCard />
+            {plants.sort(sortByCreatedDate).map((plant) => {
+              return <PlantCard {...plant} />;
+            })}
           </View>
         </ScrollView>
       )}

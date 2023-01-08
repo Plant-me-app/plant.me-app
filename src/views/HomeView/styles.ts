@@ -17,8 +17,17 @@ export const styles = StyleSheet.create({
     },
 
     body: {
+        display: 'flex',
         flexDirection: 'row',
-        flexWrap: 'wrap'
+        flexWrap: 'wrap',
+        justifyContent: 'center'
+        
+    },
+    
+    scrollContent: {
+        flexDirection: 'row',
+        justifyContent: 'center',
+        alignItems: 'center',
     },
 
     searchContainer: {

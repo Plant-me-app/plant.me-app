@@ -4,6 +4,8 @@ export interface ISpecies {
     name?: string;
     soil?: {};
     water?: {};
+    resistance: string;
+    poison: string;
   }
   
 export interface ISize {
@@ -12,9 +14,9 @@ export interface ISize {
   
 export interface IPlant {
     name?: string;
-    species?: string;
+    species?: ISpecies;
     size?: string;
-    image?: string;
+    image?: number;
 }
 
 export interface IPlantImage {

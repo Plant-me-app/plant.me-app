@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { Image, TouchableOpacity, View } from "react-native";
-import { Avatars } from "../AvatarModal/Avatars";
 import { styles } from "./styles";
 
 const NoPlantSelected = require("../../assets/images/NoImgSelected.png");

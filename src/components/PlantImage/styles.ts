@@ -44,7 +44,7 @@ export const styles = StyleSheet.create({
         top: hp('1.5%'),
     },
     imageSelected: {
-        width: wp('15%'),
+        width: wp('20%'),
         height: hp('9%'),
         top: hp('1.5%'),
     },
