@@ -43,8 +43,8 @@ export const styles = StyleSheet.create({
     },
 
     emptyImage: {
-        width: hp('40%'),
-        height: hp('40%')
+        width: hp('35%'),
+        height: hp('35%')
     },
 
     emptyLabel: {
