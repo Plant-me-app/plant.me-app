@@ -15,7 +15,9 @@
             "cicle":"mensal",
             "season":"Outubro - Março"
         },
-        "light":"Indireta"
+        "light":"Indireta",
+        "resistance":"Alta",
+        "poison":"Alto"
     },
     {
         "name":"Samambaia",
@@ -33,7 +35,9 @@
             "cicle":"mensal",
             "season":"Janeiro - Dezembro"
         },
-        "light":"Indireta"
+        "light":"Indireta",
+        "resistance":"Alta",
+        "poison":"Alto"
     },
     {
         "name":"Espada de São Jorge",
@@ -51,7 +55,9 @@
             "cicle":"mensal",
             "season":"Outubro - Março"
         },
-        "light":"Indireta"
+        "light":"Indireta",
+        "resistance":"Alta",
+        "poison":"Alto"
     },
     {
         "name":"Yucca",
@@ -69,7 +75,9 @@
             "cicle":"anual",
             "season":"Outubro - Março"
         },
-        "light":"5h"
+        "light":"5h",
+        "resistance":"Alta",
+        "poison":"Baixo"
     },
     {
         "name":"Suculenta",
@@ -87,7 +95,9 @@
             "cicle":"trimestral",
             "season":"Janeiro - Dezembro"
         },
-        "light":"4h"
+        "light":"4h",
+        "resistance":"Média",
+        "poison":"Média"
     },
     {
         "name":"Cacto",
@@ -105,7 +115,9 @@
             "cicle":"mensal",
             "season":"Janeiro - Dezembro"
         },
-        "light":"Direta"
+        "light":"Direta",
+        "resistance":"Alta",
+        "poison":"Baixo"
     },
     {
         "name":"Lírio da Paz",
@@ -123,7 +135,9 @@
             "cicle":"mensal",
             "season":"Outubro - Março"
         },
-        "light":"Indireta"
+        "light":"Indireta",
+        "resistance":"Média",
+        "poison":"Alto"
     },
     {
         "name":"Fitônia",
@@ -141,7 +155,9 @@
             "cicle":"trimestral",
             "season":"Janeiro - Dezembro"
         },
-        "light":"Indireta"
+        "light":"Indireta",
+        "resistance":"Alta",
+        "poison":"Baixo"
     },
     {
         "name":"Dracena",
@@ -159,7 +175,9 @@
             "cicle":"mensal",
             "season":"Outubro - Março"
         },
-        "light":"3h"
+        "light":"3h",
+        "resistance":"Alta",
+        "poison":"Alto"
     },
     {
         "name":"Planta Jade",
@@ -177,6 +195,8 @@
             "cicle":"trimestral",
             "season":"Janeiro - Dezembro"
         },
-        "light":"Direta"
+        "light":"Direta",
+        "resistance":"Média",
+        "poison":"Alto"
     }
 ]
