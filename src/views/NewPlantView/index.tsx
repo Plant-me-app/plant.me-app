@@ -16,8 +16,8 @@ import InputText from "../../components/InputText";
 import AvatarModal from "../../components/AvatarModal/AvatarModal";
 import { Labels } from "../../constants/label.constants";
 
-const plants = require("../../../assets/plants.json");
-const plantSize = require("../../../assets/plantSize.json");
+const plants = require("../../assets/mocks/plants.json");
+const plantSize = require("../../assets/mocks/plantSize.json");
 
 const NewPlantView = ({ navigation }): React.ReactElement => {
   const [species, setSeletedSpecies] = useState<ISpecies>({});

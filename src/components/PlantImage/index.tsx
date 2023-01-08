@@ -3,8 +3,8 @@ import { Image, TouchableOpacity, View } from "react-native";
 import { Avatars } from "../AvatarModal/Avatars";
 import { styles } from "./styles";
 
-const NoPlantSelected = require("../../images/NoImgSelected.png");
-const Pencil = require("../../images/Pencil.png");
+const NoPlantSelected = require("../../assets/images/NoImgSelected.png");
+const Pencil = require("../../assets/images/Pencil.png");
 
 interface PlantImage {
   onPress: () => void;

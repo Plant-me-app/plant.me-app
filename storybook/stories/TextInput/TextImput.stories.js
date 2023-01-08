@@ -6,19 +6,9 @@ import style from './style';
 import InputDropdown from '../../../src/components/InputDropdown';
 import PlantImage from '../../../src/components/PlantImage';
 
-const plants = require("../../../assets/plants.json");
+const plants = require("../../../src/assets/mocks/plants.json");
 
-const plantSize = [
-  {
-    name: 'Pequeno'
-  },
-  {
-    name: 'Medio'
-  },
-  {
-    name: 'Grande'
-  }
-]
+const plantSize = require("../../../src/assets/mocks/plantSize.json")
 
 storiesOf('Input', module)
   .addDecorator((getStory) => <View style={style.input}>{getStory()}</View>)

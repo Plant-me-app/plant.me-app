@@ -16,9 +16,15 @@ export const styles = StyleSheet.create({
         alignItems: 'center',
     },
 
+    body: {
+        flexDirection: 'row',
+        flexWrap: 'wrap'
+    },
+
     searchContainer: {
         flexDirection: 'row',
-        justifyContent: 'center'
+        justifyContent: 'center',
+        marginBottom: hp('1%')
     },
 
     labelContainer: {
