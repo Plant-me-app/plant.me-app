@@ -10,17 +10,17 @@ const HomeView = ({ navigation }): React.ReactElement => {
   const arrowDown = require("../../images/ArrowDown.png");
   const [plants, setPlants] = useState([]);
 
+  const loadPlants = async () => {
+    const result = await getPlants();
+    setPlants(result.data.data);
+  };
+
   useEffect(() => {
-    const plants = async () => {
-      const result = await getPlants();
-      console.log("result", result.data.data);
-      setPlants(result.data.data);
-    };
-    const getsPlants = navigation.addListener("focus", () => {
-      plants();
+    const loadWhenNavigate = navigation.addListener("focus", () => {
+      loadPlants();
     });
-    plants();
-    return getsPlants;
+    loadPlants();
+    return loadWhenNavigate;
   }, [navigation]);
 
   return (
