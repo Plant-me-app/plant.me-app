@@ -74,5 +74,9 @@ export const styles = StyleSheet.create({
         width: wp('7%'),
         height: wp('7%'),
         left: wp('2%')
+    },
+
+    scrollContainer: { 
+        flex: 1,
     }
 })

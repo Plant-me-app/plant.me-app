@@ -43,5 +43,5 @@ export const styles = StyleSheet.create({
     info: {
         fontSize: hp('1.8%'),
         paddingBottom: hp('0.1%')
-    }
+    },
 })
