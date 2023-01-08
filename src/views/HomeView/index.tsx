@@ -1,5 +1,12 @@
-import React, { useEffect, useState } from "react";
-import { Image, ScrollView, Text, View } from "react-native";
+import React, { useCallback, useEffect, useState } from "react";
+import {
+  Image,
+  ScrollView,
+  SafeAreaView,
+  Text,
+  View,
+  RefreshControl,
+} from "react-native";
 import PlantCard from "../../components/PlantCard";
 import SearchBar from "../../components/SearchBar";
 import { Labels } from "../../constants/label.constants";
@@ -10,7 +17,9 @@ import { styles } from "./styles";
 const HomeView = ({ navigation }): React.ReactElement => {
   const emptyScreen = require("../../assets/images/HomeEmpty.png");
   const arrowDown = require("../../assets/images/ArrowDown.png");
+
   const [plants, setPlants] = useState([]);
+  const [refreshing, setRefreshing] = useState(false);
 
   useEffect(() => {
     const loadWhenNavigate = navigation.addListener("focus", () => {
@@ -20,10 +29,19 @@ const HomeView = ({ navigation }): React.ReactElement => {
     return loadWhenNavigate;
   }, [navigation]);
 
+  const wait = (timeout) => {
+    return new Promise((resolve) => setTimeout(resolve, timeout));
+  };
+
   const loadPlants = async () => {
     const response = await getPlants();
     setPlants(response.data.data);
   };
+
+  const onRefresh = useCallback(() => {
+    setRefreshing(true);
+    wait(1000).then(() => loadPlants().then(() => setRefreshing(false)));
+  }, []);
 
   return (
     <View style={styles.container}>
@@ -43,13 +61,19 @@ const HomeView = ({ navigation }): React.ReactElement => {
         </View>
       )}
       {plants.length > 0 && (
-        <ScrollView>
-          <View style={styles.body}>
-            {sortByCreatedDate(plants).map((plant) => (
-              <PlantCard {...plant} />
-            ))}
-          </View>
-        </ScrollView>
+        <SafeAreaView style={styles.scrollContainer}>
+          <ScrollView
+            refreshControl={
+              <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
+            }
+          >
+            <View style={styles.body}>
+              {sortByCreatedDate(plants).map((plant) => (
+                <PlantCard {...plant} key={plant.id} />
+              ))}
+            </View>
+          </ScrollView>
+        </SafeAreaView>
       )}
     </View>
   );

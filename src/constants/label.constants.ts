@@ -5,6 +5,6 @@ export const Labels = {
     emptyHomeLabel: "Clique aqui para cadastrar sua planta!",
     species: "Espécie",
     size: "Porte",
-    resistence: "Resistance",
+    resistence: "Resistência",
     poison: "Veneno"
 }
