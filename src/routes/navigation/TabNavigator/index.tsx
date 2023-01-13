@@ -9,8 +9,20 @@ import NotificationView from "../../../views/NotificationsView";
 import ProfileView from "../../../views/ProfileView";
 import LeafButton from "../../../components/LeafButton";
 import { Size } from "../../../configs/sizes";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import PlantDetails from "../../../views/PlantDetails";
 
 const Tab = createBottomTabNavigator();
+const HomeStack = createNativeStackNavigator();
+
+function HomeStackScreen() {
+  return (
+    <HomeStack.Navigator screenOptions={{ headerShown: false }}>
+      <HomeStack.Screen name="HomeView" component={HomeView} />
+      <HomeStack.Screen name="PlantDetails" component={PlantDetails} />
+    </HomeStack.Navigator>
+  );
+}
 
 const TabNavigator = (): React.ReactElement => {
   return (
@@ -22,7 +34,7 @@ const TabNavigator = (): React.ReactElement => {
     >
       <Tab.Screen
         name="Home"
-        component={HomeView}
+        component={HomeStackScreen}
         options={{
           tabBarIcon: ({ focused }) => (
             <MaterialIcons
