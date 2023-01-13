@@ -6,6 +6,7 @@ import {
   Text,
   View,
   RefreshControl,
+  TouchableOpacity,
 } from "react-native";
 import PlantCard from "../../components/PlantCard";
 import SearchBar from "../../components/SearchBar";
@@ -69,7 +70,12 @@ const HomeView = ({ navigation }): React.ReactElement => {
           >
             <View style={styles.body}>
               {sortByCreatedDate(plants).map((plant, i) => (
-                <PlantCard {...plant} key={i} />
+                <TouchableOpacity
+                  key={i}
+                  onPress={() => navigation.navigate("PlantDetails")}
+                >
+                  <PlantCard {...plant} />
+                </TouchableOpacity>
               ))}
             </View>
           </ScrollView>
