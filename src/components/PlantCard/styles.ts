@@ -7,7 +7,7 @@ export const styles = StyleSheet.create({
     container: {
         display: 'flex',
         width: wp('40%'),
-        height: hp('30%'),
+        height: hp('33%'),
         margin: wp('4%'),
         backgroundColor: 'rgba(rgba(167, 201, 87, 0.2))',
         borderRadius: wp('3%')
@@ -31,17 +31,17 @@ export const styles = StyleSheet.create({
     },
 
     img: {
-        width: hp('10%'),
-        height: wp('20%')
+        width: hp('12%'),
+        height: wp('22%')
     },
 
     title: {
         ...fontStyles.header,
-        fontSize: wp('5%')
+        fontSize: wp('4%')
     },
 
     info: {
         fontSize: hp('1.8%'),
-        paddingBottom: hp('0.1%')
+        paddingBottom: hp('0.2%')
     },
 })
