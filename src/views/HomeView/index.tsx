@@ -68,8 +68,8 @@ const HomeView = ({ navigation }): React.ReactElement => {
             }
           >
             <View style={styles.body}>
-              {sortByCreatedDate(plants).map((plant) => (
-                <PlantCard {...plant} key={plant.id} />
+              {sortByCreatedDate(plants).map((plant, i) => (
+                <PlantCard {...plant} key={i} />
               ))}
             </View>
           </ScrollView>

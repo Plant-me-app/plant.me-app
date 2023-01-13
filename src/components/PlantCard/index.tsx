@@ -5,10 +5,6 @@ import { IPlant } from "../../constants/plant.interface";
 import { styles } from "./styles";
 
 const PlantCard = (plant): React.ReactElement => {
-  useEffect(() => {
-    console.log("plants", plant.name);
-  });
-
   const B = (props) => (
     <Text style={{ fontWeight: "bold" }}>{props.children}</Text>
   );
