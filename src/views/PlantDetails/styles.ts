@@ -86,4 +86,8 @@ export const styles = StyleSheet.create({
         borderRadius: 30,
     },
 
+    historyLabel: {
+        ...fontStyles.link
+    }
+
 })

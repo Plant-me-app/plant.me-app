@@ -1,5 +1,6 @@
 import React from "react";
 import { Image, View, Text, TouchableOpacity } from "react-native";
+import { Labels } from "../../constants/label.constants";
 import { styles } from "./styles";
 
 const editIcon = require("../../assets/images/Details/Edit.png");
@@ -23,18 +24,18 @@ const PlantDetails = ({ navigation }): React.ReactElement => {
         <View style={styles.headerIcons}>
           <TouchableOpacity style={styles.iconContainer}>
             <Image source={infoIcon} style={styles.detailsIcons} />
-            <Text style={styles.iconSubtitle}>Infos</Text>
+            <Text style={styles.iconSubtitle}>{Labels.infos}</Text>
           </TouchableOpacity>
           <TouchableOpacity style={styles.iconContainer}>
             <Image source={level1Icon} style={styles.detailsIcons} />
-            <Text style={styles.iconSubtitle}>Nível</Text>
+            <Text style={styles.iconSubtitle}>{Labels.level}</Text>
           </TouchableOpacity>
           <TouchableOpacity
             style={styles.iconContainer}
             onPress={() => navigation.navigate("EditPlant", { edition: true })}
           >
             <Image source={editIcon} style={styles.detailsIcons} />
-            <Text style={styles.iconSubtitle}>Editar</Text>
+            <Text style={styles.iconSubtitle}>{Labels.edit}</Text>
           </TouchableOpacity>
         </View>
         <Image source={plant.image} style={styles.plantImg} />
@@ -42,30 +43,30 @@ const PlantDetails = ({ navigation }): React.ReactElement => {
       </View>
       <View style={styles.body}>
         <View style={styles.bodyContainer}>
-          <View style={styles.taskContainer}>
+          <TouchableOpacity style={styles.taskContainer}>
             <Image source={waterIcon} style={styles.taskIcon} />
-            <Text style={styles.iconSubtitle}>Água</Text>
+            <Text style={styles.iconSubtitle}>{Labels.water}</Text>
             <View style={styles.statusBar} />
-          </View>
-          <View style={styles.taskContainer}>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.taskContainer}>
             <Image source={soilIcon} style={styles.taskIcon} />
-            <Text style={styles.iconSubtitle}>Terra</Text>
+            <Text style={styles.iconSubtitle}>{Labels.soil}</Text>
             <View style={styles.statusBar} />
-          </View>
-          <View style={styles.taskContainer}>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.taskContainer}>
             <Image source={sunIcon} style={styles.taskIcon} />
-            <Text style={styles.iconSubtitle}>Sol</Text>
+            <Text style={styles.iconSubtitle}>{Labels.sun}</Text>
             <View style={styles.statusBar} />
-          </View>
-          <View style={styles.taskContainer}>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.taskContainer}>
             <Image source={fertilizerIcon} style={styles.taskIcon} />
-            <Text style={styles.iconSubtitle}>Fertilizante</Text>
+            <Text style={styles.iconSubtitle}>{Labels.fertilizer}</Text>
             <View style={styles.statusBar} />
-          </View>
+          </TouchableOpacity>
         </View>
         <View style={styles.historyContainer}>
           <TouchableOpacity>
-            <Text>Ver Histórico</Text>
+            <Text style={styles.historyLabel}>{Labels.seeHistory}</Text>
           </TouchableOpacity>
         </View>
       </View>
