@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Image, View, Text, TouchableOpacity } from "react-native";
 import { Labels } from "../../constants/label.constants";
 import { styles } from "./styles";
+import { MaterialIcons } from "@expo/vector-icons";
+import { Colors } from "../../configs/colors";
 
 const editIcon = require("../../assets/images/Details/Edit.png");
 const infoIcon = require("../../assets/images/Details/Info.png");
@@ -12,14 +14,25 @@ const soilIcon = require("../../assets/images/Details/Tasks/Soil.png");
 const sunIcon = require("../../assets/images/Details/Tasks/Sun.png");
 const waterIcon = require("../../assets/images/Details/Tasks/Water.png");
 
-const PlantDetails = ({ navigation }): React.ReactElement => {
-  const plant = {
-    name: "Juninha",
-    image: 21,
+const PlantDetails = ({ navigation, route }): React.ReactElement => {
+  const { plant } = route?.params;
+
+  const onBack = () => {
+    navigation.goBack();
+  };
+
+  const onEditPlant = () => {
+    navigation.navigate("EditPlant", { edition: true });
   };
 
   return (
     <View style={styles.container}>
+      <View style={styles.backBtnContainer}>
+        <TouchableOpacity style={styles.backLabel} onPress={() => onBack()}>
+          <MaterialIcons name="arrow-back-ios" size={18} color={Colors.dark} />
+          <Text style={styles.link}>{Labels.goBack}</Text>
+        </TouchableOpacity>
+      </View>
       <View style={styles.header}>
         <View style={styles.headerIcons}>
           <TouchableOpacity style={styles.iconContainer}>
@@ -32,7 +45,7 @@ const PlantDetails = ({ navigation }): React.ReactElement => {
           </TouchableOpacity>
           <TouchableOpacity
             style={styles.iconContainer}
-            onPress={() => navigation.navigate("EditPlant", { edition: true })}
+            onPress={() => onEditPlant()}
           >
             <Image source={editIcon} style={styles.detailsIcons} />
             <Text style={styles.iconSubtitle}>{Labels.edit}</Text>
@@ -64,9 +77,9 @@ const PlantDetails = ({ navigation }): React.ReactElement => {
             <View style={styles.statusBar} />
           </TouchableOpacity>
         </View>
-        <View style={styles.historyContainer}>
+        <View>
           <TouchableOpacity>
-            <Text style={styles.historyLabel}>{Labels.seeHistory}</Text>
+            <Text style={styles.link}>{Labels.seeHistory}</Text>
           </TouchableOpacity>
         </View>
       </View>

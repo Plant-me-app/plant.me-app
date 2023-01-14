@@ -72,7 +72,9 @@ const HomeView = ({ navigation }): React.ReactElement => {
               {sortByCreatedDate(plants).map((plant, i) => (
                 <TouchableOpacity
                   key={i}
-                  onPress={() => navigation.navigate("PlantDetails")}
+                  onPress={() =>
+                    navigation.navigate("PlantDetails", { plant: plant })
+                  }
                 >
                   <PlantCard {...plant} />
                 </TouchableOpacity>

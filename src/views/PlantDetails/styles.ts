@@ -16,17 +16,18 @@ export const styles = StyleSheet.create({
 
     header: {
         width: wp('100%'),
-        height: hp('65%'),
+        height: hp('60%'),
         flexDirection: 'column',
         justifyContent: 'space-around',
-        alignItems: 'center'
+        alignItems: 'center',
+        paddingBottom: hp('5%')
     },
 
     headerIcons: {
         width: '100%',
         flexDirection: 'row',
         justifyContent: 'space-around',
-        marginTop: hp('5%')
+        marginTop: hp('1%')
     },
 
     body: {
@@ -44,13 +45,9 @@ export const styles = StyleSheet.create({
         justifyContent: 'space-around',
     },
 
-    historyContainer: {
-
-    },
-
     plantImg: {
-        width: wp('55%'),
-        height: wp('55%'),
+        width: wp('50%'),
+        height: wp('50%')
     },
 
     title: {
@@ -86,8 +83,18 @@ export const styles = StyleSheet.create({
         borderRadius: 30,
     },
 
-    historyLabel: {
+    link: {
         ...fontStyles.link
+    },
+
+    backBtnContainer: {
+        height: hp('3%'),
+        marginTop: hp('5%'),
+        marginLeft: wp('3%')
+    },
+
+    backLabel: {
+        flexDirection: 'row'
     }
 
 })

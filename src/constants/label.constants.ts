@@ -14,5 +14,6 @@ export const Labels = {
     soil: 'Terra',
     sun: 'Sol',
     fertilizer: 'Adubo',
-    seeHistory: 'Ver Histórico'
+    seeHistory: 'Ver Histórico',
+    goBack: 'Voltar'
 }
