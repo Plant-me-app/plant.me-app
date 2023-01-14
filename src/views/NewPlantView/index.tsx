@@ -19,13 +19,14 @@ import { Labels } from "../../constants/label.constants";
 const plants = require("../../assets/mocks/plants.json");
 const plantSize = require("../../assets/mocks/plantSize.json");
 
-const NewPlantView = ({ navigation }): React.ReactElement => {
-  const [species, setSeletedSpecies] = useState<ISpecies>({});
+const NewPlantView = ({ route, navigation }): React.ReactElement => {
+  const [species, setSeletedSpecies] = useState<ISpecies>();
   const [name, setName] = useState<string>("");
   const [size, setSize] = useState<ISize>({});
   const [img, setImg] = useState<IPlantImage>();
   const [loading, setLoading] = useState(false);
   const [isEnabled, setEnabled] = useState(false);
+  const { edition } = route?.params;
 
   const onSelectSpecies = (item: ISpecies) => {
     setSeletedSpecies(item);
@@ -72,7 +73,9 @@ const NewPlantView = ({ navigation }): React.ReactElement => {
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
       <View style={styles.container}>
         <View style={styles.header}>
-          <Text style={styles.headerTitle}>{Labels.newPlantHeader}</Text>
+          <Text style={styles.headerTitle}>
+            {edition ? "Editar Planta" : Labels.newPlantHeader}
+          </Text>
         </View>
         <View style={styles.body}>
           <AvatarModal onChangeImage={onSelectImage} />

@@ -15,11 +15,14 @@ import PlantDetails from "../../../views/PlantDetails";
 const Tab = createBottomTabNavigator();
 const HomeStack = createNativeStackNavigator();
 
+const PlantStack = createNativeStackNavigator();
+
 function HomeStackScreen() {
   return (
     <HomeStack.Navigator screenOptions={{ headerShown: false }}>
       <HomeStack.Screen name="HomeView" component={HomeView} />
       <HomeStack.Screen name="PlantDetails" component={PlantDetails} />
+      <HomeStack.Screen name="EditPlant" component={NewPlantView} />
     </HomeStack.Navigator>
   );
 }
@@ -74,6 +77,7 @@ const TabNavigator = (): React.ReactElement => {
       <Tab.Screen
         name="New Plant"
         component={NewPlantView}
+        initialParams={{ edition: false }}
         options={{
           tabBarIcon: ({ focused }) => <LeafButton isFocused={focused} />,
           unmountOnBlur: true,
