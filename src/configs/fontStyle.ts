@@ -59,6 +59,6 @@ export const fontStyles = StyleSheet.create({
     subtitle: {
         fontSize: FontSize.xxSmall,
         fontWeight: "400",
-        letterSpacing: 3
+        letterSpacing: 2
     },
 });
