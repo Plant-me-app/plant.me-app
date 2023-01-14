@@ -16,7 +16,7 @@ export const styles = StyleSheet.create({
 
     header: {
         width: wp('100%'),
-        height: hp('60%'),
+        height: hp('65%'),
         flexDirection: 'column',
         justifyContent: 'space-around',
         alignItems: 'center'
@@ -30,9 +30,22 @@ export const styles = StyleSheet.create({
     },
 
     body: {
+        flex: 1,
         width: wp('100%'),
-        height: hp('30%'),
-        backgroundColor: "rgba(167, 201, 87, 0.2)"
+        backgroundColor: "rgba(167, 201, 87, 0.2)",
+        flexDirection: 'column',
+        justifyContent: 'space-around',
+        alignItems: 'center'
+    },
+
+    bodyContainer: {
+        width: wp('100%'),
+        flexDirection: 'row',
+        justifyContent: 'space-around',
+    },
+
+    historyContainer: {
+
     },
 
     plantImg: {
@@ -53,6 +66,24 @@ export const styles = StyleSheet.create({
     iconSubtitle: {
         ...fontStyles.subtitle,
         paddingTop: hp('1%'),
-    }
+        paddingBottom: hp('1%')
+    },
+
+    taskIcon: {
+        width: wp('10%'),
+        height: wp('10%')
+    },
+
+    taskContainer: {
+        flexDirection: 'column',
+        alignItems: 'center'
+    },
+
+    statusBar: {
+        width: wp('12%'),
+        height: hp('1.5%'),
+        backgroundColor: Colors.green_sap,
+        borderRadius: 30,
+    },
 
 })
