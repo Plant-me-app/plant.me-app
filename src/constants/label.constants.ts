@@ -6,5 +6,13 @@ export const Labels = {
     species: "Espécie",
     size: "Porte",
     resistence: "Resistência",
-    poison: "Veneno"
+    poison: "Veneno",
+    infos: "Infos",
+    level: "Nível",
+    edit: 'Editar',
+    water: 'Água',
+    soil: 'Terra',
+    sun: 'Sol',
+    fertilizer: 'Adubo',
+    seeHistory: 'Ver Histórico'
 }

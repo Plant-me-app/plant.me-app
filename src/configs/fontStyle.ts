@@ -29,7 +29,7 @@ export const fontStyles = StyleSheet.create({
     link: {
         fontSize: FontSize.xSmall,
         fontWeight: "600",
-        letterSpacing: 3
+        letterSpacing: 2
     },
     
     header: {
