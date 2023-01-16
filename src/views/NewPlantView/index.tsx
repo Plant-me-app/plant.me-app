@@ -13,7 +13,7 @@ import { IPlantImage, ISize, ISpecies } from "../../constants/plant.interface";
 import Button from "../../components/Button";
 import InputDropdown from "../../components/InputDropdown";
 import InputText from "../../components/InputText";
-import AvatarModal from "../../components/AvatarModal/AvatarModal";
+import AvatarModal from "../../components/AvatarModal";
 import { Labels } from "../../constants/label.constants";
 
 const plants = require("../../assets/mocks/plants.json");

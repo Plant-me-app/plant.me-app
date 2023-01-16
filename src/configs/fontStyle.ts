@@ -21,9 +21,15 @@ export const fontStyles = StyleSheet.create({
     },
     
     modal: {
+        fontSize: FontSize.small,
+        fontWeight: "800",
+        letterSpacing: 2
+    },
+
+    modalInfo: {
         fontSize: FontSize.xSmall,
         fontWeight: "400",
-        letterSpacing: 3
+        letterSpacing: 1
     },
     
     link: {
