@@ -1,9 +1,12 @@
-import React, { useEffect } from "react";
+import React, { useState } from "react";
 import { Image, View, Text, TouchableOpacity } from "react-native";
 import { Labels } from "../../constants/label.constants";
 import { styles } from "./styles";
 import { MaterialIcons } from "@expo/vector-icons";
 import { Colors } from "../../configs/colors";
+import Modal from "../../components/Modal";
+import InfoContent from "../../components/InfoContent";
+import TaskIcon from "../../components/TaskIcon";
 
 const editIcon = require("../../assets/images/Details/Edit.png");
 const infoIcon = require("../../assets/images/Details/Info.png");
@@ -16,6 +19,7 @@ const waterIcon = require("../../assets/images/Details/Tasks/Water.png");
 
 const PlantDetails = ({ navigation, route }): React.ReactElement => {
   const { plant } = route?.params;
+  const [modalInfo, setModalInfo] = useState(false);
 
   const onBack = () => {
     navigation.goBack();
@@ -26,64 +30,64 @@ const PlantDetails = ({ navigation, route }): React.ReactElement => {
   };
 
   return (
-    <View style={styles.container}>
-      <View style={styles.backBtnContainer}>
-        <TouchableOpacity style={styles.backLabel} onPress={() => onBack()}>
-          <MaterialIcons name="arrow-back-ios" size={18} color={Colors.dark} />
-          <Text style={styles.link}>{Labels.goBack}</Text>
-        </TouchableOpacity>
-      </View>
-      <View style={styles.header}>
-        <View style={styles.headerIcons}>
-          <TouchableOpacity style={styles.iconContainer}>
-            <Image source={infoIcon} style={styles.detailsIcons} />
-            <Text style={styles.iconSubtitle}>{Labels.infos}</Text>
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.iconContainer}>
-            <Image source={level1Icon} style={styles.detailsIcons} />
-            <Text style={styles.iconSubtitle}>{Labels.level}</Text>
-          </TouchableOpacity>
-          <TouchableOpacity
-            style={styles.iconContainer}
-            onPress={() => onEditPlant()}
-          >
-            <Image source={editIcon} style={styles.detailsIcons} />
-            <Text style={styles.iconSubtitle}>{Labels.edit}</Text>
+    <>
+      <View style={styles.container}>
+        <View style={styles.backBtnContainer}>
+          <TouchableOpacity style={styles.backLabel} onPress={() => onBack()}>
+            <MaterialIcons
+              name="arrow-back-ios"
+              size={18}
+              color={Colors.dark}
+            />
+            <Text style={styles.link}>{Labels.goBack}</Text>
           </TouchableOpacity>
         </View>
-        <Image source={plant.image} style={styles.plantImg} />
-        <Text style={styles.title}>{plant.name}</Text>
-      </View>
-      <View style={styles.body}>
-        <View style={styles.bodyContainer}>
-          <TouchableOpacity style={styles.taskContainer}>
-            <Image source={waterIcon} style={styles.taskIcon} />
-            <Text style={styles.iconSubtitle}>{Labels.water}</Text>
-            <View style={styles.statusBar} />
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.taskContainer}>
-            <Image source={soilIcon} style={styles.taskIcon} />
-            <Text style={styles.iconSubtitle}>{Labels.soil}</Text>
-            <View style={styles.statusBar} />
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.taskContainer}>
-            <Image source={sunIcon} style={styles.taskIcon} />
-            <Text style={styles.iconSubtitle}>{Labels.sun}</Text>
-            <View style={styles.statusBar} />
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.taskContainer}>
-            <Image source={fertilizerIcon} style={styles.taskIcon} />
-            <Text style={styles.iconSubtitle}>{Labels.fertilizer}</Text>
-            <View style={styles.statusBar} />
-          </TouchableOpacity>
+        <View style={styles.header}>
+          <View style={styles.headerIcons}>
+            <TouchableOpacity
+              style={styles.iconContainer}
+              onPress={() => setModalInfo(true)}
+            >
+              <Image source={infoIcon} style={styles.detailsIcons} />
+              <Text style={styles.iconSubtitle}>{Labels.infos}</Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.iconContainer}>
+              <Image source={level1Icon} style={styles.detailsIcons} />
+              <Text style={styles.iconSubtitle}>{Labels.level}</Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+              style={styles.iconContainer}
+              onPress={() => onEditPlant()}
+            >
+              <Image source={editIcon} style={styles.detailsIcons} />
+              <Text style={styles.iconSubtitle}>{Labels.edit}</Text>
+            </TouchableOpacity>
+          </View>
+          <Image source={plant.image} style={styles.plantImg} />
+          <Text style={styles.title}>{plant.name}</Text>
         </View>
-        <View>
-          <TouchableOpacity>
-            <Text style={styles.link}>{Labels.seeHistory}</Text>
-          </TouchableOpacity>
+        <View style={styles.body}>
+          <View style={styles.bodyContainer}>
+            <TaskIcon icon={waterIcon} label={Labels.water} />
+            <TaskIcon icon={soilIcon} label={Labels.soil} />
+            <TaskIcon icon={sunIcon} label={Labels.sun} />
+            <TaskIcon icon={fertilizerIcon} label={Labels.fertilizer} />
+          </View>
+          <View>
+            <TouchableOpacity>
+              <Text style={styles.link}>{Labels.seeHistory}</Text>
+            </TouchableOpacity>
+          </View>
         </View>
       </View>
-    </View>
+      <Modal
+        visible={modalInfo}
+        handleOpen={() => setModalInfo(true)}
+        handleClose={() => setModalInfo(false)}
+      >
+        <InfoContent plant={plant} />
+      </Modal>
+    </>
   );
 };
 

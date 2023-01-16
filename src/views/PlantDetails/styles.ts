@@ -95,6 +95,25 @@ export const styles = StyleSheet.create({
 
     backLabel: {
         flexDirection: 'row'
+    },
+
+    infoContainer: {
+        paddingLeft: wp('5%'),
+        paddingRight: wp('3%')
+    },
+
+    infoTitle: {
+        ...fontStyles.modal,
+        textAlign: 'center'
+    },
+
+    infoHeader: {
+        paddingBottom: hp('3%')
+    },
+
+    infoContentText: {
+        ...fontStyles.modalInfo,
+        paddingBottom: hp('1%')
     }
 
 })
