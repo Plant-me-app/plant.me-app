@@ -5,8 +5,10 @@ import { styles } from "./styles";
 import { MaterialIcons } from "@expo/vector-icons";
 import { Colors } from "../../configs/colors";
 import Modal from "../../components/Modal";
-import InfoContent from "../../components/InfoContent";
-import TaskIcon from "../../components/TaskIcon";
+import InfoContent from "./InfoContent";
+import TaskIcon from "./TaskIcon";
+import TaskModalContent from "./TaskModalContent";
+import { TaskTypes } from "../../constants/taskTypes.enum";
 
 const editIcon = require("../../assets/images/Details/Edit.png");
 const infoIcon = require("../../assets/images/Details/Info.png");
@@ -20,13 +22,80 @@ const waterIcon = require("../../assets/images/Details/Tasks/Water.png");
 const PlantDetails = ({ navigation, route }): React.ReactElement => {
   const { plant } = route?.params;
   const [modalInfo, setModalInfo] = useState(false);
+  const [openModal, setOpenModal] = useState(false);
+  const [taskModelContent, setTaskModelContent] = useState(null);
 
+  const taskIcons = [
+    { icon: waterIcon, label: Labels.water, task: TaskTypes.Water },
+    { icon: soilIcon, label: Labels.soil, task: TaskTypes.Soil },
+    { icon: sunIcon, label: Labels.sun, task: TaskTypes.Light },
+    {
+      icon: fertilizerIcon,
+      label: Labels.fertilizer,
+      task: TaskTypes.Fertilizer,
+    },
+  ];
   const onBack = () => {
     navigation.goBack();
   };
 
   const onEditPlant = () => {
     navigation.navigate("EditPlant", { edition: true, plantSelected: plant });
+  };
+
+  const TaskIcons = () => (
+    <>
+      {taskIcons.map(({ icon, label, task }) => (
+        <TaskIcon
+          key={label}
+          icon={icon}
+          label={label}
+          onPress={() => onTaskModalPress(task)}
+        />
+      ))}
+    </>
+  );
+
+  const onTaskModalPress = (taskTypes: TaskTypes) => {
+    const taskElementMap = {
+      [TaskTypes.Water]: (
+        <TaskModalContent
+          headerTitle="Rega"
+          history="02/01/2023"
+          btnTitle="Regar"
+          onPress={() => console.log("clicou")}
+        />
+      ),
+      [TaskTypes.Soil]: (
+        <TaskModalContent
+          headerTitle="Troca de Terra"
+          history="02/01/2023"
+          btnTitle="Trocar Terra"
+          onPress={() => console.log("clicou2")}
+        />
+      ),
+      [TaskTypes.Light]: (
+        <TaskModalContent
+          headerTitle="Luz Solar"
+          history="02/01/2023"
+          btnTitle="Iluminar"
+          onPress={() => console.log("clicou3")}
+        />
+      ),
+      [TaskTypes.Fertilizer]: (
+        <TaskModalContent
+          headerTitle="Adubo"
+          history="02/01/2023"
+          btnTitle="Adubar"
+          onPress={() => console.log("clicou4")}
+        />
+      ),
+    };
+
+    const modelContent = taskElementMap[taskTypes];
+    setTaskModelContent(modelContent);
+
+    setOpenModal(true);
   };
 
   return (
@@ -68,10 +137,7 @@ const PlantDetails = ({ navigation, route }): React.ReactElement => {
         </View>
         <View style={styles.body}>
           <View style={styles.bodyContainer}>
-            <TaskIcon icon={waterIcon} label={Labels.water} />
-            <TaskIcon icon={soilIcon} label={Labels.soil} />
-            <TaskIcon icon={sunIcon} label={Labels.sun} />
-            <TaskIcon icon={fertilizerIcon} label={Labels.fertilizer} />
+            <TaskIcons />
           </View>
           <View>
             <TouchableOpacity>
@@ -86,6 +152,13 @@ const PlantDetails = ({ navigation, route }): React.ReactElement => {
         handleClose={() => setModalInfo(false)}
       >
         <InfoContent plant={plant} />
+      </Modal>
+      <Modal
+        visible={openModal}
+        handleOpen={() => setOpenModal(true)}
+        handleClose={() => setOpenModal(false)}
+      >
+        {taskModelContent}
       </Modal>
     </>
   );
