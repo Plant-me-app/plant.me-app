@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Text, View } from "react-native";
-import { Labels } from "../../constants/label.constants";
+import { Labels } from "../../../constants/label.constants";
 import { styles } from "./styles";
 
 const B = (props) => (

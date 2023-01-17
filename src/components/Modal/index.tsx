@@ -9,10 +9,6 @@ const Modal = ({
   handleClose,
   children,
 }): React.ReactElement => {
-  useEffect(() => {
-    console.log("open", visible);
-  });
-
   return (
     <>
       <Backdrop
