@@ -63,6 +63,7 @@ const PlantDetails = ({ navigation, route }): React.ReactElement => {
           headerTitle="Rega"
           history="02/01/2023"
           btnTitle="Regar"
+          taskType={TaskTypes.Water}
           onPress={() => console.log("clicou")}
         />
       ),
@@ -71,6 +72,7 @@ const PlantDetails = ({ navigation, route }): React.ReactElement => {
           headerTitle="Troca de Terra"
           history="02/01/2023"
           btnTitle="Trocar Terra"
+          taskType={TaskTypes.Soil}
           onPress={() => console.log("clicou2")}
         />
       ),
@@ -79,6 +81,7 @@ const PlantDetails = ({ navigation, route }): React.ReactElement => {
           headerTitle="Luz Solar"
           history="02/01/2023"
           btnTitle="Iluminar"
+          taskType={TaskTypes.Light}
           onPress={() => console.log("clicou3")}
         />
       ),
@@ -87,6 +90,7 @@ const PlantDetails = ({ navigation, route }): React.ReactElement => {
           headerTitle="Adubo"
           history="02/01/2023"
           btnTitle="Adubar"
+          taskType={TaskTypes.Fertilizer}
           onPress={() => console.log("clicou4")}
         />
       ),
