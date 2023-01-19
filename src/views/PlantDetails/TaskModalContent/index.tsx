@@ -47,7 +47,7 @@ const TaskModalContent = ({
     },
     [TaskTypes.Fertilizer]: {
       headerTitle: "Adubo",
-      btnTitle: "Adubagem",
+      btnTitle: "Adubar",
       color: Colors.fertilizer,
       icon: fertilizerIcon,
       subtitle: "Última Adubagem",
