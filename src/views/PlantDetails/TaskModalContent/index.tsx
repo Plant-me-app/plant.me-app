@@ -3,6 +3,7 @@ import { Image, Text, TouchableOpacity, View } from "react-native";
 import { Colors } from "../../../configs/colors";
 import { TaskTypes } from "../../../constants/taskTypes.enum";
 import { styles } from "./styles";
+import { customStyles } from "./styles";
 
 interface ITaskContent {
   plant?: {};
@@ -26,48 +27,50 @@ const TaskModalContent = ({
   btnTitle,
   taskType,
 }: ITaskContent): React.ReactElement => {
-  const [currentTask, setCurrentTask] = useState(null);
+  const content = {
+    [TaskTypes.Water]: {
+      color: Colors.water,
+      icon: waterIcon,
+    },
+    [TaskTypes.Soil]: {
+      color: Colors.soil,
+      icon: soilIcon,
+    },
+    [TaskTypes.Light]: {
+      color: Colors.sun,
+      icon: sunIcon,
+    },
+    [TaskTypes.Fertilizer]: {
+      color: Colors.fertilizer,
+      icon: fertilizerIcon,
+    },
+  };
+
+  const [currentTask, setCurrentTask] = useState(content[taskType]);
 
   const loadContent = () => {
-    const content = {
-      [TaskTypes.Water]: {
-        color: Colors.water,
-        icon: waterIcon,
-      },
-      [TaskTypes.Soil]: {
-        color: Colors.soil,
-        icon: soilIcon,
-      },
-      [TaskTypes.Light]: {
-        color: Colors.sun,
-        icon: sunIcon,
-      },
-      [TaskTypes.Fertilizer]: {
-        color: Colors.fertilizer,
-        icon: fertilizerIcon,
-      },
-    };
-    console.log("taskType", taskType);
     const selectedTask = content[taskType];
     setCurrentTask(selectedTask);
   };
 
   useEffect(() => {
     loadContent();
-    console.log("content", currentTask);
   }, [taskType]);
 
   return (
     <View>
       <View style={styles.header}>
-        <Image source={waterIcon} style={styles.icon} />
+        <Image source={currentTask.icon} style={styles.icon} />
         <Text style={styles.headerTitle}>{headerTitle}</Text>
       </View>
       <View style={styles.body}>
         <Text style={styles.history}>
           Última {headerTitle}: {history}
         </Text>
-        <TouchableOpacity onPress={onPress} style={styles.button}>
+        <TouchableOpacity
+          onPress={onPress}
+          style={customStyles(currentTask.color).button}
+        >
           <Text style={styles.btnTitle}>{btnTitle}</Text>
         </TouchableOpacity>
       </View>
