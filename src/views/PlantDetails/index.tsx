@@ -60,36 +60,28 @@ const PlantDetails = ({ navigation, route }): React.ReactElement => {
     const taskElementMap = {
       [TaskTypes.Water]: (
         <TaskModalContent
-          headerTitle="Rega"
           history="02/01/2023"
-          btnTitle="Regar"
           taskType={TaskTypes.Water}
           onPress={() => console.log("clicou")}
         />
       ),
       [TaskTypes.Soil]: (
         <TaskModalContent
-          headerTitle="Troca de Terra"
           history="02/01/2023"
-          btnTitle="Trocar Terra"
           taskType={TaskTypes.Soil}
           onPress={() => console.log("clicou2")}
         />
       ),
       [TaskTypes.Light]: (
         <TaskModalContent
-          headerTitle="Luz Solar"
           history="02/01/2023"
-          btnTitle="Iluminar"
           taskType={TaskTypes.Light}
           onPress={() => console.log("clicou3")}
         />
       ),
       [TaskTypes.Fertilizer]: (
         <TaskModalContent
-          headerTitle="Adubo"
           history="02/01/2023"
-          btnTitle="Adubar"
           taskType={TaskTypes.Fertilizer}
           onPress={() => console.log("clicou4")}
         />
@@ -98,7 +90,6 @@ const PlantDetails = ({ navigation, route }): React.ReactElement => {
 
     const modelContent = taskElementMap[taskTypes];
     setTaskModelContent(modelContent);
-
     setOpenModal(true);
   };
 
