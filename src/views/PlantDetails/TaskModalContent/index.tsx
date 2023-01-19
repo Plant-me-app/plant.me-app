@@ -7,10 +7,8 @@ import { customStyles } from "./styles";
 
 interface ITaskContent {
   plant?: {};
-  headerTitle: string;
   onPress?: () => void;
   history: string;
-  btnTitle: string;
   taskType?: TaskTypes;
 }
 
@@ -21,28 +19,38 @@ const fertilizerIcon = require("../../../assets/images/Details/TasksModal/Fertil
 
 const TaskModalContent = ({
   plant,
-  headerTitle,
   onPress,
   history,
-  btnTitle,
   taskType,
 }: ITaskContent): React.ReactElement => {
   const content = {
     [TaskTypes.Water]: {
+      headerTitle: "Rega",
+      btnTitle: "Regar",
       color: Colors.water,
       icon: waterIcon,
+      subtitle: "Última Rega",
     },
     [TaskTypes.Soil]: {
+      headerTitle: "Troca de Terra",
+      btnTitle: "Trocar Terra",
       color: Colors.soil,
       icon: soilIcon,
+      subtitle: "Última Troca de Terra",
     },
     [TaskTypes.Light]: {
+      headerTitle: "Luz Solar",
+      btnTitle: "Iluminar",
       color: Colors.sun,
       icon: sunIcon,
+      subtitle: "Última Exposição à Luz",
     },
     [TaskTypes.Fertilizer]: {
+      headerTitle: "Adubo",
+      btnTitle: "Adubagem",
       color: Colors.fertilizer,
       icon: fertilizerIcon,
+      subtitle: "Última Adubagem",
     },
   };
 
@@ -61,17 +69,17 @@ const TaskModalContent = ({
     <View>
       <View style={styles.header}>
         <Image source={currentTask.icon} style={styles.icon} />
-        <Text style={styles.headerTitle}>{headerTitle}</Text>
+        <Text style={styles.headerTitle}>{currentTask.headerTitle}</Text>
       </View>
       <View style={styles.body}>
         <Text style={styles.history}>
-          Última {headerTitle}: {history}
+          {currentTask.subtitle}: {history}
         </Text>
         <TouchableOpacity
           onPress={onPress}
           style={customStyles(currentTask.color).button}
         >
-          <Text style={styles.btnTitle}>{btnTitle}</Text>
+          <Text style={styles.btnTitle}>{currentTask.btnTitle}</Text>
         </TouchableOpacity>
       </View>
     </View>
