@@ -25,15 +25,6 @@ export const styles = StyleSheet.create({
         marginBottom: hp('3%')
     },
 
-    button: {
-        backgroundColor: Colors.water,
-        width: hp('20%'),
-        height: hp('4%'),
-        justifyContent: 'center',
-        alignItems: 'center',
-        borderRadius: wp('2%')
-    },
-
     btnTitle: {
         ...fontStyles.smallButton,
         color: Colors.white,
@@ -47,4 +38,16 @@ export const styles = StyleSheet.create({
         left: hp('2%'),
         bottom: hp('1%')
     }
+})
+
+export const customStyles = (buttonColor) => StyleSheet.create({
+
+    button: {
+        backgroundColor: buttonColor,
+        width: hp('20%'),
+        height: hp('4%'),
+        justifyContent: 'center',
+        alignItems: 'center',
+        borderRadius: wp('2%')
+    },
 })
