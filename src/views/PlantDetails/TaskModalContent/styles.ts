@@ -25,6 +25,14 @@ export const styles = StyleSheet.create({
         marginBottom: hp('3%')
     },
 
+    success: {
+        ...fontStyles.modalInfo,
+        fontSize: wp('5%'),
+        textAlign: 'center',
+        marginBottom: hp('3%'),
+        width: wp('70%')
+    },
+
     btnTitle: {
         ...fontStyles.smallButton,
         color: Colors.white,
