@@ -1,5 +1,11 @@
-import React, { useState } from "react";
-import { Image, View, Text, TouchableOpacity } from "react-native";
+import React, { useEffect, useState } from "react";
+import {
+  Image,
+  View,
+  Text,
+  TouchableOpacity,
+  ActivityIndicator,
+} from "react-native";
 import { Labels } from "../../constants/label.constants";
 import { styles } from "./styles";
 import { MaterialIcons } from "@expo/vector-icons";
@@ -9,6 +15,7 @@ import InfoContent from "./InfoContent";
 import TaskIcon from "./TaskIcon";
 import TaskModalContent from "./TaskModalContent";
 import { TaskTypes } from "../../constants/taskTypes.enum";
+import { saveTaskHistory } from "../../services/plant.service";
 
 const editIcon = require("../../assets/images/Details/Edit.png");
 const infoIcon = require("../../assets/images/Details/Info.png");
@@ -24,6 +31,7 @@ const PlantDetails = ({ navigation, route }): React.ReactElement => {
   const [modalInfo, setModalInfo] = useState(false);
   const [openModal, setOpenModal] = useState(false);
   const [taskModelContent, setTaskModelContent] = useState(null);
+  const [loading, setLoading] = useState(false);
 
   const taskIcons = [
     { icon: waterIcon, label: Labels.water, task: TaskTypes.Water },
@@ -56,34 +64,53 @@ const PlantDetails = ({ navigation, route }): React.ReactElement => {
     </>
   );
 
+  const taskCompleteContet = (taskType) => (
+    <>
+      {console.log("taskType", taskType)}
+      <TaskModalContent
+        plantName={plant.name}
+        taskType={taskType}
+        isButtonVisible={false}
+        isSuccess={true}
+      />
+    </>
+  );
+
+  const onTaskComplete = async (taskType: TaskTypes) => {
+    setLoading(true);
+    await saveTaskHistory(plant._id, taskType);
+    setTaskModelContent(taskCompleteContet(taskType));
+    setLoading(false);
+  };
+
   const onTaskModalPress = (taskTypes: TaskTypes) => {
     const taskElementMap = {
       [TaskTypes.Water]: (
         <TaskModalContent
           history="02/01/2023"
           taskType={TaskTypes.Water}
-          onPress={() => console.log("clicou")}
+          onPress={() => onTaskComplete(TaskTypes.Water)}
         />
       ),
       [TaskTypes.Soil]: (
         <TaskModalContent
           history="02/01/2023"
           taskType={TaskTypes.Soil}
-          onPress={() => console.log("clicou2")}
+          onPress={() => onTaskComplete(TaskTypes.Soil)}
         />
       ),
       [TaskTypes.Light]: (
         <TaskModalContent
           history="02/01/2023"
           taskType={TaskTypes.Light}
-          onPress={() => console.log("clicou3")}
+          onPress={() => onTaskComplete(TaskTypes.Light)}
         />
       ),
       [TaskTypes.Fertilizer]: (
         <TaskModalContent
           history="02/01/2023"
           taskType={TaskTypes.Fertilizer}
-          onPress={() => console.log("clicou4")}
+          onPress={() => onTaskComplete(TaskTypes.Fertilizer)}
         />
       ),
     };
@@ -155,6 +182,24 @@ const PlantDetails = ({ navigation, route }): React.ReactElement => {
       >
         {taskModelContent}
       </Modal>
+      {loading && (
+        <View
+          style={{
+            zIndex: 100,
+            position: "absolute",
+            justifyContent: "center",
+            flexDirection: "row",
+            alignItems: "center",
+            left: 0,
+            right: 0,
+            top: 0,
+            bottom: 0,
+            backgroundColor: "rgba(0,0,0,0.01)",
+          }}
+        >
+          {<ActivityIndicator size="large" />}
+        </View>
+      )}
     </>
   );
 };
