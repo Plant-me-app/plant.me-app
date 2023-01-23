@@ -26,7 +26,7 @@ const PlantDetails = ({ navigation, route }): React.ReactElement => {
   };
 
   const onEditPlant = () => {
-    navigation.navigate("EditPlant", { edition: true });
+    navigation.navigate("EditPlant", { edition: true, plantSelected: plant });
   };
 
   return (
