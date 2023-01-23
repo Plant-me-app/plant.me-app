@@ -50,5 +50,17 @@ export const styles = StyleSheet.create({
     deleteLink: {
         ...fontStyles.link,
         color: Colors.alburn
+    },
+    confirmationModalText: {
+        ...fontStyles.modal,
+        textAlign: 'center',
+        marginHorizontal: hp("5%")
+    },
+    confirmationModalButtons: {
+        flex: 1,
+        flexDirection: 'row',
+        justifyContent: 'space-around',
+        alignItems: 'center',
+        margin: hp("5%"),
     }
 })

@@ -16,6 +16,7 @@ import InputDropdown from "../../components/InputDropdown";
 import InputText from "../../components/InputText";
 import AvatarModal from "../../components/AvatarModal";
 import { Labels } from "../../constants/label.constants";
+import Modal from "../../components/Modal";
 
 const plants = require("../../assets/mocks/plants.json");
 const plantSize = require("../../assets/mocks/plantSize.json");
@@ -27,10 +28,10 @@ const NewPlantView = ({ route, navigation }): React.ReactElement => {
   const [img, setImg] = useState<IPlantImage>();
   const [loading, setLoading] = useState(false);
   const [isEnabled, setEnabled] = useState(false);
+  const [openModal, setOpenModal] = useState(false);
+  const [modalContent, setModalContent] = useState(null);
   const { edition } = route?.params;
   const { plantSelected } = route?.params;
-
-  // console.log(plantSelected?.species.name)
 
   const onSelectSpecies = (item: ISpecies) => {
     setSeletedSpecies(item);
@@ -73,11 +74,35 @@ const NewPlantView = ({ route, navigation }): React.ReactElement => {
     navigation.goBack();
   };
 
-  const onDelete = async () => {
+  const confirmationContent = (plantSelected) => (
+    <View>
+      <Text style={styles.confirmationModalText}>{"Tem certeza que deseja deletar " + plantSelected.name + "?"}</Text>
+      <View style={styles.confirmationModalButtons}>
+        <Button
+          onPress={() => setOpenModal(false)}
+          title="Cancelar"
+          type={buttonTypes.SmallSecondary}
+        /> 
+        <Button
+          onPress={() => removePlant(plantSelected)}
+          title="Confirmar"
+          type={buttonTypes.SmallDanger}
+        />
+      </View>
+    </View>
+  );
+
+  const removePlant = async (plantSelected) => {
     setLoading(true);
     await deletePlant(plantSelected._id);
     navigation.navigate("HomeView");
     setLoading(false);
+    setOpenModal(false);
+  };
+
+  const onDelete= () => {
+    setOpenModal(true);
+    setModalContent(confirmationContent(plantSelected));
   };
 
   useEffect(() => {
@@ -88,6 +113,13 @@ const NewPlantView = ({ route, navigation }): React.ReactElement => {
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
       <View style={styles.container}>
         <View style={styles.header}>
+          { edition ? 
+            <View style={styles.cancelBtnContainer}>
+              <TouchableOpacity onPress={() => onCancel()}>
+                <Text style={styles.cancelLink}>{Labels.cancel}</Text>
+              </TouchableOpacity>
+            </View> : <></> 
+          }
           <Text style={styles.headerTitle}>
             {edition ? "Editar Planta" : Labels.newPlantHeader}
           </Text>
@@ -98,19 +130,19 @@ const NewPlantView = ({ route, navigation }): React.ReactElement => {
             placeholder="Nome da Planta"
             title="Nome"
             onChangeText={onChangeText}
-            text={name}
+            text={edition ? plantSelected.name : name}
           />
           <InputDropdown
             items={plants}
             placeholder="Espécie"
-            onSelect={onSelectSpecies}
+            onSelect={edition ? plantSelected.species.name : onSelectSpecies}
             itemSelected={species}
           />
           <InputDropdown
             items={plantSize}
             placeholder="Porte"
             onSelect={onSelectSize}
-            itemSelected={size}
+            itemSelected={edition ? plantSelected.size : size}
           />
           <View style={styles.buttonContainer}>
             {edition ? 
@@ -132,6 +164,13 @@ const NewPlantView = ({ route, navigation }): React.ReactElement => {
             />
           </View>
         </View>
+        <Modal
+          visible={openModal}
+          handleOpen={() => setOpenModal(true)}
+          handleClose={() => setOpenModal(false)}
+        >
+          {modalContent}
+        </Modal>
         {loading && (
           <View
             style={{
