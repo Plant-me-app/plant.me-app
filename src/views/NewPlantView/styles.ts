@@ -2,7 +2,7 @@ import { StyleSheet } from "react-native";
 import { Colors } from "../../configs/colors";
 import { fontStyles } from "../../configs/fontStyle";
 import { Size } from "../../configs/sizes";
-import { heightPercentageToDP as hp } from "react-native-responsive-screen";
+import { heightPercentageToDP as hp, widthPercentageToDP as wp } from "react-native-responsive-screen";
 
 export const styles = StyleSheet.create({
     containerView: {
@@ -13,8 +13,11 @@ export const styles = StyleSheet.create({
         backgroundColor: Colors.green_hunter
     },
     buttonContainer: {
+        flex: 1,
+        flexDirection: 'row',
+        justifyContent: 'space-around',
         marginTop: hp('10%'),
-        alignSelf: 'center'
+        alignItens: 'center'
     },
     body: {
         flex: 1,
@@ -23,15 +26,29 @@ export const styles = StyleSheet.create({
         borderTopRightRadius: Size.SIZE_20,
     },
     header: {
-        flexDirection: 'row',
+        flexDirection: 'column',
         justifyContent: 'center',
-        alignItems: 'center',
-        height: hp("15%")
+        height: hp("15%"),
+        marginTop: hp("3%"),
     },
     headerTitle: {
         ...fontStyles.header,
         color: Colors.white,
-        paddingTop: hp("3%"),
+        paddingBottom: hp("3%"),
         fontSize: hp("4%"),
+        alignSelf: 'center',
+    },
+    cancelBtnContainer: {
+        height: hp('3%'),
+        marginBottom: hp('1%'),
+        marginLeft: wp('3%'),
+    },
+    cancelLink: {
+        ...fontStyles.link,
+        color: Colors.white
+    },
+    deleteLink: {
+        ...fontStyles.link,
+        color: Colors.alburn
     }
 })

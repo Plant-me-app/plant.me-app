@@ -20,5 +20,7 @@ export const Labels = {
     watering: 'Rega',
     light: 'Luz',
     changeSoil: 'Troca de Terra',
-    fertilizer2: 'Fertilizante'
+    fertilizer2: 'Fertilizante',
+    cancel: 'Cancelar',
+    delete: 'Deletar'
 }

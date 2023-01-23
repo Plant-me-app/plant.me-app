@@ -6,9 +6,10 @@ import {
   Text,
   TouchableWithoutFeedback,
   View,
+  TouchableOpacity
 } from "react-native";
 import { buttonTypes } from "../../constants/buttonsTypes.enum";
-import { createPlant } from "../../services/plant.service";
+import { createPlant, deletePlant } from "../../services/plant.service";
 import { IPlantImage, ISize, ISpecies } from "../../constants/plant.interface";
 import Button from "../../components/Button";
 import InputDropdown from "../../components/InputDropdown";
@@ -27,6 +28,9 @@ const NewPlantView = ({ route, navigation }): React.ReactElement => {
   const [loading, setLoading] = useState(false);
   const [isEnabled, setEnabled] = useState(false);
   const { edition } = route?.params;
+  const { plantSelected } = route?.params;
+
+  // console.log(plantSelected?.species.name)
 
   const onSelectSpecies = (item: ISpecies) => {
     setSeletedSpecies(item);
@@ -65,6 +69,17 @@ const NewPlantView = ({ route, navigation }): React.ReactElement => {
     setLoading(false);
   };
 
+  const onCancel = () => {
+    navigation.goBack();
+  };
+
+  const onDelete = async () => {
+    setLoading(true);
+    await deletePlant(plantSelected._id);
+    navigation.navigate("HomeView");
+    setLoading(false);
+  };
+
   useEffect(() => {
     isFilled();
   });
@@ -98,6 +113,13 @@ const NewPlantView = ({ route, navigation }): React.ReactElement => {
             itemSelected={size}
           />
           <View style={styles.buttonContainer}>
+            {edition ? 
+              <View>
+                <TouchableOpacity onPress={() => onDelete()}>
+                  <Text style={styles.deleteLink}>{Labels.delete}</Text>
+                </TouchableOpacity>
+              </View> : <></> 
+            }
             <Button
               disabled={!isEnabled}
               onPress={() => onSave()}
