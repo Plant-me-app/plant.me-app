@@ -43,7 +43,10 @@ const PlantDetails = ({ navigation, route }): React.ReactElement => {
   const formatDate = (lastDate) => {
     if (!lastDate) return "Sem Registro";
     const date = new Date(lastDate[0]);
-    const formatDate = date.toLocaleDateString();
+    const day = date.getUTCDate();
+    const month = date.getMonth() + 1;
+    const year = date.getFullYear();
+    const formatDate = `${day}/${month}/${year}`;
 
     return formatDate;
   };
