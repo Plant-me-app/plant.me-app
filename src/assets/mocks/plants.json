@@ -122,7 +122,7 @@
     {
         "name":"Lírio da Paz",
         "water":{
-            "amount":3,
+            "amount":1,
             "cicle":"semanal"
         },
         "soil":{
@@ -142,7 +142,7 @@
     {
         "name":"Fitônia",
         "water":{
-            "amount":2,
+            "amount":1,
             "cicle":"semanal"
         },
         "soil":{
@@ -162,7 +162,7 @@
     {
         "name":"Dracena",
         "water":{
-            "amount":2,
+            "amount":1,
             "cicle":"semanal"
         },
         "soil":{
@@ -182,7 +182,7 @@
     {
         "name":"Planta Jade",
         "water":{
-            "amount":3,
+            "amount":1,
             "cicle":"semanal"
         },
         "soil":{
