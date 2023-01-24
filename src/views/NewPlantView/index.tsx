@@ -95,9 +95,9 @@ const NewPlantView = ({ route, navigation }): React.ReactElement => {
   const removePlant = async (plantSelected) => {
     setLoading(true);
     await deletePlant(plantSelected._id);
-    navigation.navigate("HomeView");
-    setLoading(false);
     setOpenModal(false);
+    setLoading(false);
+    navigation.navigate("HomeView");
   };
 
   const onDelete= () => {
