@@ -66,7 +66,7 @@ const NewPlantView = ({ route, navigation }): React.ReactElement => {
       size: size.name,
       image: img?.img,
     });
-    navigation.navigate("Home");
+    navigation.navigate("HomeView");
     setLoading(false);
   };
 
