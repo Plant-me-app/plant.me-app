@@ -1,5 +1,5 @@
 export interface ISpecies {
-    fertilization?: {};
+    fertilizer?: {};
     light?: string;
     name?: string;
     soil?: {};
