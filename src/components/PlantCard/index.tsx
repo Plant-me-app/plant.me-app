@@ -9,10 +9,6 @@ const PlantCard = (plant): React.ReactElement => {
     <Text style={{ fontWeight: "bold" }}>{props.children}</Text>
   );
 
-  // useEffect(() => {
-  //   console.log("plant", plant);
-  // });
-
   return (
     <View style={styles.container}>
       <View style={styles.header}>

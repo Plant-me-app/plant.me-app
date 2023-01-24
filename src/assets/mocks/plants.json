@@ -10,7 +10,7 @@
             "cicle":"anual",
             "season":"Janeiro - Dezembro"
         },
-        "fertilization":{
+        "fertilizer":{
             "amount":1,
             "cicle":"mensal",
             "season":"Outubro - Março"
@@ -30,7 +30,7 @@
             "cicle":"anual",
             "season":"Janeiro - Dezembro"
         },
-        "fertilization":{
+        "fertilizer":{
             "amount":1,
             "cicle":"mensal",
             "season":"Janeiro - Dezembro"
@@ -50,7 +50,7 @@
             "cicle":"anual",
             "season":"Maio - Julho"
         },
-        "fertilization":{
+        "fertilizer":{
             "amount":1,
             "cicle":"mensal",
             "season":"Outubro - Março"
@@ -70,7 +70,7 @@
             "cicle":"anual",
             "season":"Janeiro - Dezembro"
         },
-        "fertilization":{
+        "fertilizer":{
             "amount":1,
             "cicle":"anual",
             "season":"Outubro - Março"
@@ -90,7 +90,7 @@
             "cicle":"anual",
             "season":"Janeiro - Dezembro"
         },
-        "fertilization":{
+        "fertilizer":{
             "amount":1,
             "cicle":"trimestral",
             "season":"Janeiro - Dezembro"
@@ -110,7 +110,7 @@
             "cicle":"anual",
             "season":"Janeiro - Dezembro"
         },
-        "fertilization":{
+        "fertilizer":{
             "amount":1,
             "cicle":"mensal",
             "season":"Janeiro - Dezembro"
@@ -130,7 +130,7 @@
             "cicle":"anual",
             "season":"Janeiro - Dezembro"
         },
-        "fertilization":{
+        "fertilizer":{
             "amount":1,
             "cicle":"mensal",
             "season":"Outubro - Março"
@@ -150,7 +150,7 @@
             "cicle":"anual",
             "season":"Janeiro - Dezembro"
         },
-        "fertilization":{
+        "fertilizer":{
             "amount":1,
             "cicle":"trimestral",
             "season":"Janeiro - Dezembro"
@@ -170,7 +170,7 @@
             "cicle":"anual",
             "season":"Janeiro - Dezembro"
         },
-        "fertilization":{
+        "fertilizer":{
             "amount":1,
             "cicle":"mensal",
             "season":"Outubro - Março"
@@ -190,7 +190,7 @@
             "cicle":"trimestral",
             "season":"Janeiro - Dezembro"
         },
-        "fertilization":{
+        "fertilizer":{
             "amount":1,
             "cicle":"trimestral",
             "season":"Janeiro - Dezembro"

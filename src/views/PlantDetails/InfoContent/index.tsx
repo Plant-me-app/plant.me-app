@@ -30,9 +30,8 @@ const InfoContent = ({ plant }): React.ReactElement => (
         {plant.species.soil.cicle}: {plant.species.soil.season}
       </Text>
       <Text style={styles.infoContentText}>
-        <B>{Labels.fertilizer2}:</B> {plant.species.fertilization.amount} /{" "}
-        {plant.species.fertilization.cicle}:{" "}
-        {plant.species.fertilization.season}
+        <B>{Labels.fertilizer2}:</B> {plant.species.fertilizer.amount} /{" "}
+        {plant.species.fertilizer.cicle}: {plant.species.fertilizer.season}
       </Text>
     </View>
   </View>

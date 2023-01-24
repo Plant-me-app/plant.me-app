@@ -38,8 +38,10 @@ const PlantDetails = ({ navigation, route }): React.ReactElement => {
   const [soilButton, setSoilButton] = useState(false);
   const [lightButton, setLightButton] = useState(false);
   const [fertilizerButton, setFertilizerButton] = useState(false);
+  const [plantData, setPlantData] = useState({});
 
   const formatDate = (lastDate) => {
+    if (!lastDate) return "Sem Registro";
     const date = new Date(lastDate[0]);
     const formatDate = date.toLocaleDateString();
 
@@ -49,7 +51,7 @@ const PlantDetails = ({ navigation, route }): React.ReactElement => {
   const taskElementMap = {
     [TaskTypes.Water]: (
       <TaskModalContent
-        history={formatDate(plant.details.water.lastDate)}
+        history={formatDate(plantData["details"]?.water.lastDate)}
         taskType={TaskTypes.Water}
         isButtonEnabled={waterButton}
         onPress={() => onTaskComplete(TaskTypes.Water)}
@@ -57,7 +59,7 @@ const PlantDetails = ({ navigation, route }): React.ReactElement => {
     ),
     [TaskTypes.Soil]: (
       <TaskModalContent
-        history={formatDate(plant.details.soil.lastDate)}
+        history={formatDate(plantData["details"]?.soil.lastDate)}
         taskType={TaskTypes.Soil}
         isButtonEnabled={soilButton}
         onPress={() => onTaskComplete(TaskTypes.Soil)}
@@ -65,7 +67,7 @@ const PlantDetails = ({ navigation, route }): React.ReactElement => {
     ),
     [TaskTypes.Light]: (
       <TaskModalContent
-        history={formatDate(plant.details.light.lastDate)}
+        history={formatDate(plantData["details"]?.light.lastDate)}
         taskType={TaskTypes.Light}
         isButtonEnabled={lightButton}
         onPress={() => onTaskComplete(TaskTypes.Light)}
@@ -73,7 +75,7 @@ const PlantDetails = ({ navigation, route }): React.ReactElement => {
     ),
     [TaskTypes.Fertilizer]: (
       <TaskModalContent
-        history={formatDate(plant.details.fertilizer.lastDate)}
+        history={formatDate(plantData["details"]?.fertilizer.lastDate)}
         taskType={TaskTypes.Fertilizer}
         isButtonEnabled={fertilizerButton}
         onPress={() => onTaskComplete(TaskTypes.Fertilizer)}
@@ -103,7 +105,6 @@ const PlantDetails = ({ navigation, route }): React.ReactElement => {
 
   const taskCompleteContet = (taskType) => (
     <>
-      {console.log("taskType", taskType)}
       <TaskModalContent
         plantName={plant.name}
         taskType={taskType}
@@ -122,6 +123,7 @@ const PlantDetails = ({ navigation, route }): React.ReactElement => {
 
   const onTaskModalPress = (taskTypes: TaskTypes) => {
     const modelContent = taskElementMap[taskTypes];
+    loadPlant();
     setTaskOpen(taskTypes);
     setTaskModelContent(modelContent);
     setOpenModal(true);
@@ -135,7 +137,13 @@ const PlantDetails = ({ navigation, route }): React.ReactElement => {
     setFertilizerButton(response.data.isFertilizerButtonEnabled);
   };
 
+  const loadPlant = async () => {
+    const response = await getPlantById(plant._id);
+    setPlantData(response.data.data);
+  };
+
   useEffect(() => {
+    loadPlant();
     loadTaskButtonState();
   }, [openModal]);
 
@@ -196,7 +204,9 @@ const PlantDetails = ({ navigation, route }): React.ReactElement => {
       </Modal>
       <Modal
         visible={openModal}
-        handleOpen={() => setOpenModal(true)}
+        handleOpen={() => {
+          setOpenModal(true);
+        }}
         handleClose={() => {
           const modelContent = taskElementMap[taskOpen];
           setOpenModal(false);
