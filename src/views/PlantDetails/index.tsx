@@ -20,15 +20,12 @@ import Modal from "../../components/Modal";
 import InfoContent from "./InfoContent";
 import TaskIcon from "./TaskIcon";
 import TaskModalContent from "./TaskModalContent";
+import { taskIcons } from "../../constants/taskIcons";
+import { getPlantById } from "../../services/plant.service";
 
 const editIcon = require("../../assets/images/Details/Edit.png");
 const infoIcon = require("../../assets/images/Details/Info.png");
 const level1Icon = require("../../assets/images/Details/Level1.png");
-
-const fertilizerIcon = require("../../assets/images/Details/Tasks/Fertilizer.png");
-const soilIcon = require("../../assets/images/Details/Tasks/Soil.png");
-const sunIcon = require("../../assets/images/Details/Tasks/Sun.png");
-const waterIcon = require("../../assets/images/Details/Tasks/Water.png");
 
 const PlantDetails = ({ navigation, route }): React.ReactElement => {
   const { plant } = route?.params;
@@ -41,17 +38,6 @@ const PlantDetails = ({ navigation, route }): React.ReactElement => {
   const [soilButton, setSoilButton] = useState(false);
   const [lightButton, setLightButton] = useState(false);
   const [fertilizerButton, setFertilizerButton] = useState(false);
-
-  const taskIcons = [
-    { icon: waterIcon, label: Labels.water, task: TaskTypes.Water },
-    { icon: soilIcon, label: Labels.soil, task: TaskTypes.Soil },
-    { icon: sunIcon, label: Labels.sun, task: TaskTypes.Light },
-    {
-      icon: fertilizerIcon,
-      label: Labels.fertilizer,
-      task: TaskTypes.Fertilizer,
-    },
-  ];
 
   const formatDate = (lastDate) => {
     const date = new Date(lastDate[0]);
