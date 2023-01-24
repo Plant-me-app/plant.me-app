@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   Image,
   View,
@@ -10,12 +10,16 @@ import { Labels } from "../../constants/label.constants";
 import { styles } from "./styles";
 import { MaterialIcons } from "@expo/vector-icons";
 import { Colors } from "../../configs/colors";
+import { TaskTypes } from "../../constants/taskTypes.enum";
+import {
+  getTaskButtonEnabled,
+  saveTaskHistory,
+} from "../../services/plant.service";
+
 import Modal from "../../components/Modal";
 import InfoContent from "./InfoContent";
 import TaskIcon from "./TaskIcon";
 import TaskModalContent from "./TaskModalContent";
-import { TaskTypes } from "../../constants/taskTypes.enum";
-import { saveTaskHistory } from "../../services/plant.service";
 
 const editIcon = require("../../assets/images/Details/Edit.png");
 const infoIcon = require("../../assets/images/Details/Info.png");
@@ -31,7 +35,12 @@ const PlantDetails = ({ navigation, route }): React.ReactElement => {
   const [modalInfo, setModalInfo] = useState(false);
   const [openModal, setOpenModal] = useState(false);
   const [taskModelContent, setTaskModelContent] = useState(null);
+  const [taskOpen, setTaskOpen] = useState(null);
   const [loading, setLoading] = useState(false);
+  const [waterButton, setWaterButton] = useState(false);
+  const [soilButton, setSoilButton] = useState(false);
+  const [lightButton, setLightButton] = useState(false);
+  const [fertilizerButton, setFertilizerButton] = useState(false);
 
   const taskIcons = [
     { icon: waterIcon, label: Labels.water, task: TaskTypes.Water },
@@ -43,6 +52,48 @@ const PlantDetails = ({ navigation, route }): React.ReactElement => {
       task: TaskTypes.Fertilizer,
     },
   ];
+
+  const formatDate = (lastDate) => {
+    const date = new Date(lastDate[0]);
+    const formatDate = date.toLocaleDateString();
+
+    return formatDate;
+  };
+
+  const taskElementMap = {
+    [TaskTypes.Water]: (
+      <TaskModalContent
+        history={formatDate(plant.details.water.lastDate)}
+        taskType={TaskTypes.Water}
+        isButtonEnabled={waterButton}
+        onPress={() => onTaskComplete(TaskTypes.Water)}
+      />
+    ),
+    [TaskTypes.Soil]: (
+      <TaskModalContent
+        history={formatDate(plant.details.soil.lastDate)}
+        taskType={TaskTypes.Soil}
+        isButtonEnabled={soilButton}
+        onPress={() => onTaskComplete(TaskTypes.Soil)}
+      />
+    ),
+    [TaskTypes.Light]: (
+      <TaskModalContent
+        history={formatDate(plant.details.light.lastDate)}
+        taskType={TaskTypes.Light}
+        isButtonEnabled={lightButton}
+        onPress={() => onTaskComplete(TaskTypes.Light)}
+      />
+    ),
+    [TaskTypes.Fertilizer]: (
+      <TaskModalContent
+        history={formatDate(plant.details.fertilizer.lastDate)}
+        taskType={TaskTypes.Fertilizer}
+        isButtonEnabled={fertilizerButton}
+        onPress={() => onTaskComplete(TaskTypes.Fertilizer)}
+      />
+    ),
+  };
   const onBack = () => {
     navigation.goBack();
   };
@@ -84,41 +135,23 @@ const PlantDetails = ({ navigation, route }): React.ReactElement => {
   };
 
   const onTaskModalPress = (taskTypes: TaskTypes) => {
-    const taskElementMap = {
-      [TaskTypes.Water]: (
-        <TaskModalContent
-          history="02/01/2023"
-          taskType={TaskTypes.Water}
-          onPress={() => onTaskComplete(TaskTypes.Water)}
-        />
-      ),
-      [TaskTypes.Soil]: (
-        <TaskModalContent
-          history="02/01/2023"
-          taskType={TaskTypes.Soil}
-          onPress={() => onTaskComplete(TaskTypes.Soil)}
-        />
-      ),
-      [TaskTypes.Light]: (
-        <TaskModalContent
-          history="02/01/2023"
-          taskType={TaskTypes.Light}
-          onPress={() => onTaskComplete(TaskTypes.Light)}
-        />
-      ),
-      [TaskTypes.Fertilizer]: (
-        <TaskModalContent
-          history="02/01/2023"
-          taskType={TaskTypes.Fertilizer}
-          onPress={() => onTaskComplete(TaskTypes.Fertilizer)}
-        />
-      ),
-    };
-
     const modelContent = taskElementMap[taskTypes];
+    setTaskOpen(taskTypes);
     setTaskModelContent(modelContent);
     setOpenModal(true);
   };
+
+  const loadTaskButtonState = async () => {
+    const response = await getTaskButtonEnabled(plant._id);
+    setWaterButton(response.data.isWaterButtonEnabled);
+    setSoilButton(response.data.isSoilButtonEnabled);
+    setLightButton(response.data.isLightButtonEnabled);
+    setFertilizerButton(response.data.isFertilizerButtonEnabled);
+  };
+
+  useEffect(() => {
+    loadTaskButtonState();
+  }, [openModal]);
 
   return (
     <>
@@ -178,7 +211,11 @@ const PlantDetails = ({ navigation, route }): React.ReactElement => {
       <Modal
         visible={openModal}
         handleOpen={() => setOpenModal(true)}
-        handleClose={() => setOpenModal(false)}
+        handleClose={() => {
+          const modelContent = taskElementMap[taskOpen];
+          setOpenModal(false);
+          setTaskModelContent(modelContent);
+        }}
       >
         {taskModelContent}
       </Modal>

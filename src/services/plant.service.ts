@@ -24,6 +24,10 @@ export const deletePlant = async (id: any) => {
     });
 }
 
+export const getPlantById = async (id: string) => {
+    return await api.get(`/plants/${id}`)
+}
+
 export const saveTaskHistory = async (id: number, task: TaskTypes) => {
     const result = await api.put(`/plants/${id}/task`, {task});
     return new Promise((resolve, reject) => {
@@ -31,4 +35,8 @@ export const saveTaskHistory = async (id: number, task: TaskTypes) => {
             resolve(result);
         }, 500)
     }) 
+}
+
+export const getTaskButtonEnabled = async (id: number) => {
+    return await api.get(`/plants/${id}/task/enable`);
 }

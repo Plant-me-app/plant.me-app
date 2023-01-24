@@ -1,4 +1,5 @@
 import { StyleSheet } from "react-native";
+import { heightPercentageToDP as hp } from "react-native-responsive-screen";
 import { Colors } from "../../configs/colors";
 import { fontStyles } from "../../configs/fontStyle";
 
@@ -30,7 +31,7 @@ export const styles = StyleSheet.create({
     },
 
     disabledPrimarySmallButton: {
-        width: 103,
+        width: hp('20%'),
         height: 26,
         backgroundColor: Colors.grey,
         borderRadius: 8,

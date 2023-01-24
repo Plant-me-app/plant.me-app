@@ -23,7 +23,7 @@
         "name":"Samambaia",
         "water":{
             "amount":1,
-            "cicle":"diário"
+            "cicle":"diario"
         },
         "soil":{
             "amount":1,

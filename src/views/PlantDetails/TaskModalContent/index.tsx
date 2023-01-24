@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { Image, Text, TouchableOpacity, View } from "react-native";
+import Button from "../../../components/Button";
 import { Colors } from "../../../configs/colors";
+import { buttonTypes } from "../../../constants/buttonsTypes.enum";
 import { Messages } from "../../../constants/messages.constants";
 import { TaskTypes } from "../../../constants/taskTypes.enum";
 import { styles } from "./styles";
@@ -14,6 +16,7 @@ interface ITaskContent {
   taskType?: TaskTypes;
   isButtonVisible?: boolean;
   isSuccess?: boolean;
+  isButtonEnabled?: boolean;
 }
 
 const waterIcon = require("../../../assets/images/Details/TasksModal/Water.png");
@@ -29,6 +32,7 @@ const TaskModalContent = ({
   taskType,
   isButtonVisible = true,
   isSuccess = false,
+  isButtonEnabled,
 }: ITaskContent): React.ReactElement => {
   const content = {
     [TaskTypes.Water]: {
@@ -89,13 +93,21 @@ const TaskModalContent = ({
             {Messages.good} {plantName} {Messages.taskSuccess}
           </Text>
         )}
-        {isButtonVisible && (
+        {isButtonVisible && isButtonEnabled && (
           <TouchableOpacity
             onPress={onPress}
             style={customStyles(currentTask.color).button}
           >
             <Text style={styles.btnTitle}>{currentTask.btnTitle}</Text>
           </TouchableOpacity>
+        )}
+        {isButtonVisible && !isButtonEnabled && (
+          <Button
+            title={currentTask.btnTitle}
+            type={buttonTypes.DisabledSmallPrimary}
+            disabled={true}
+            onPress={onPress}
+          />
         )}
       </View>
     </View>
