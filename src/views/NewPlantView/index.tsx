@@ -9,7 +9,11 @@ import {
   TouchableOpacity,
 } from "react-native";
 import { buttonTypes } from "../../constants/buttonsTypes.enum";
-import { createPlant, deletePlant } from "../../services/plant.service";
+import {
+  createPlant,
+  deletePlant,
+  updatePlant,
+} from "../../services/plant.service";
 import { IPlantImage, ISize, ISpecies } from "../../constants/plant.interface";
 import Button from "../../components/Button";
 import InputDropdown from "../../components/InputDropdown";
@@ -27,49 +31,69 @@ const NewPlantView = ({ route, navigation }): React.ReactElement => {
   const [species, setSeletedSpecies] = useState<ISpecies>(
     edition && plantSelected.species
   );
-  const [name, setName] = useState<string>("");
+  const [name, setName] = useState<string>(edition && plantSelected.name);
   const [size, setSize] = useState<ISize>(
     edition && { name: plantSelected.size }
   );
-  const [img, setImg] = useState<IPlantImage>();
+  const [img, setImg] = useState<IPlantImage>(edition && plantSelected.image);
   const [loading, setLoading] = useState(false);
   const [isEnabled, setEnabled] = useState(false);
   const [openModal, setOpenModal] = useState(false);
   const [modalContent, setModalContent] = useState(null);
+  const [isEdited, setEditied] = useState(false);
 
   const onSelectSpecies = (item: ISpecies) => {
     setSeletedSpecies(item);
+    setEditied(true);
   };
 
   const onChangeText = (text) => {
     setName(text);
+    setEditied(true);
   };
 
   const onSelectSize = (item: ISize) => {
     setSize(item);
+    setEditied(true);
   };
 
   const onSelectImage = (item: IPlantImage) => {
     setImg(item);
+    setEditied(true);
   };
 
   const isFilled = () => {
-    setEnabled(
-      name?.length > 0 &&
-        species?.name?.length > 0 &&
-        size?.name?.length > 0 &&
-        img?.path?.length > 0
-    );
+    if (edition) {
+      if (isEdited) {
+        setEnabled(!!name && !!img && !!species && !!size);
+      } else {
+        setEnabled(false);
+      }
+    } else {
+      setEnabled(!!name && !!img && !!species && !!size);
+    }
   };
 
   const onSave = async () => {
     setLoading(true);
-    await createPlant({
-      name: name,
-      species: species,
-      size: size.name,
-      image: img?.img,
-    });
+    if (edition) {
+      await updatePlant(
+        {
+          name: name,
+          species: species,
+          size: size.name,
+          image: img?.img,
+        },
+        plantSelected._id
+      );
+    } else {
+      await createPlant({
+        name: name,
+        species: species,
+        size: size.name,
+        image: img?.img,
+      });
+    }
     navigation.navigate("HomeView");
     setLoading(false);
   };
@@ -139,7 +163,7 @@ const NewPlantView = ({ route, navigation }): React.ReactElement => {
             placeholder="Nome da Planta"
             title="Nome"
             onChangeText={onChangeText}
-            text={edition ? plantSelected.name : name}
+            text={name}
           />
           <InputDropdown
             items={plants}
