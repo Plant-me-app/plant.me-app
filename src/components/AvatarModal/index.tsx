@@ -7,11 +7,15 @@ import { Avatars } from "./Avatars";
 
 interface IAvatarModal {
   onChangeImage?: (item) => void;
+  selectedImage?: number;
 }
 
-const AvatarModal = ({ onChangeImage }: IAvatarModal): React.ReactElement => {
+const AvatarModal = ({
+  onChangeImage,
+  selectedImage,
+}: IAvatarModal): React.ReactElement => {
   const [visible, setVisible] = useState(false);
-  const [img, setImg] = useState(null);
+  const [img, setImg] = useState(selectedImage ?? null);
 
   const handleOpen = () => {
     setVisible(true);
