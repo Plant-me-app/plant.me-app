@@ -35,6 +35,7 @@ const InputDropdown = ({
             underlineColorAndroid: "transparent",
             style: styles.dropDownSearch,
             showSoftInputOnFocus: false,
+            defaultValue: itemSelected["name"],
           }}
           listProps={{
             nestedScrollEnabled: true,

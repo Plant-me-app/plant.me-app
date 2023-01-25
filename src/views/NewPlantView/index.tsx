@@ -6,7 +6,7 @@ import {
   Text,
   TouchableWithoutFeedback,
   View,
-  TouchableOpacity
+  TouchableOpacity,
 } from "react-native";
 import { buttonTypes } from "../../constants/buttonsTypes.enum";
 import { createPlant, deletePlant } from "../../services/plant.service";
@@ -22,16 +22,20 @@ const plants = require("../../assets/mocks/plants.json");
 const plantSize = require("../../assets/mocks/plantSize.json");
 
 const NewPlantView = ({ route, navigation }): React.ReactElement => {
-  const [species, setSeletedSpecies] = useState<ISpecies>();
+  const { edition } = route?.params;
+  const { plantSelected } = route?.params;
+  const [species, setSeletedSpecies] = useState<ISpecies>(
+    edition && plantSelected.species
+  );
   const [name, setName] = useState<string>("");
-  const [size, setSize] = useState<ISize>({});
+  const [size, setSize] = useState<ISize>(
+    edition && { name: plantSelected.size }
+  );
   const [img, setImg] = useState<IPlantImage>();
   const [loading, setLoading] = useState(false);
   const [isEnabled, setEnabled] = useState(false);
   const [openModal, setOpenModal] = useState(false);
   const [modalContent, setModalContent] = useState(null);
-  const { edition } = route?.params;
-  const { plantSelected } = route?.params;
 
   const onSelectSpecies = (item: ISpecies) => {
     setSeletedSpecies(item);
@@ -76,13 +80,15 @@ const NewPlantView = ({ route, navigation }): React.ReactElement => {
 
   const confirmationContent = (plantSelected) => (
     <View>
-      <Text style={styles.confirmationModalText}>{"Tem certeza que deseja deletar " + plantSelected.name + "?"}</Text>
+      <Text style={styles.confirmationModalText}>
+        {"Tem certeza que deseja deletar " + plantSelected.name + "?"}
+      </Text>
       <View style={styles.confirmationModalButtons}>
         <Button
           onPress={() => setOpenModal(false)}
           title="Cancelar"
           type={buttonTypes.SmallSecondary}
-        /> 
+        />
         <Button
           onPress={() => removePlant(plantSelected)}
           title="Confirmar"
@@ -100,7 +106,7 @@ const NewPlantView = ({ route, navigation }): React.ReactElement => {
     navigation.navigate("HomeView");
   };
 
-  const onDelete= () => {
+  const onDelete = () => {
     setOpenModal(true);
     setModalContent(confirmationContent(plantSelected));
   };
@@ -113,19 +119,22 @@ const NewPlantView = ({ route, navigation }): React.ReactElement => {
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
       <View style={styles.container}>
         <View style={styles.header}>
-          { edition ? 
+          {edition && (
             <View style={styles.cancelBtnContainer}>
               <TouchableOpacity onPress={() => onCancel()}>
                 <Text style={styles.cancelLink}>{Labels.cancel}</Text>
               </TouchableOpacity>
-            </View> : <></> 
-          }
+            </View>
+          )}
           <Text style={styles.headerTitle}>
             {edition ? "Editar Planta" : Labels.newPlantHeader}
           </Text>
         </View>
         <View style={styles.body}>
-          <AvatarModal onChangeImage={onSelectImage} />
+          <AvatarModal
+            onChangeImage={onSelectImage}
+            selectedImage={plantSelected?.image}
+          />
           <InputText
             placeholder="Nome da Planta"
             title="Nome"
@@ -135,23 +144,23 @@ const NewPlantView = ({ route, navigation }): React.ReactElement => {
           <InputDropdown
             items={plants}
             placeholder="Espécie"
-            onSelect={edition ? plantSelected.species.name : onSelectSpecies}
+            onSelect={onSelectSpecies}
             itemSelected={species}
           />
           <InputDropdown
             items={plantSize}
             placeholder="Porte"
             onSelect={onSelectSize}
-            itemSelected={edition ? plantSelected.size : size}
+            itemSelected={size}
           />
           <View style={styles.buttonContainer}>
-            {edition ? 
+            {edition && (
               <View>
                 <TouchableOpacity onPress={() => onDelete()}>
                   <Text style={styles.deleteLink}>{Labels.delete}</Text>
                 </TouchableOpacity>
-              </View> : <></> 
-            }
+              </View>
+            )}
             <Button
               disabled={!isEnabled}
               onPress={() => onSave()}
