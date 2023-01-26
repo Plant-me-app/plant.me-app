@@ -28,5 +28,14 @@ export const Labels = {
     achievements: 'Conquistas',
     editProfile: 'Editar Perfil',
     configs: 'Configurações',
-    exit: 'Sair da Conta'
+    exit: 'Sair da Conta',
+    splashScreenNext: 'Continuar',
+    splashScreenDone: 'Vamos Começar!',
+    splashScreenSkip: 'Pular',
+    splashScreenTitle1: 'O início',
+    splashScreenText1: 'Era um dia como qualquer outro, em que nada poderia dar errado. Até que... As primeiras pragas começaram a aparecer!',
+    splashScreenTitle2: 'As pragas',
+    splashScreenText2: 'Elas chegaram para aterrorizar a vida das plantinhas e destruir os jardins da vizinhança!',
+    splashScreenTitle3: 'Os cuidados',
+    splashScreenText3: 'Mas nem tudo está perdido! Basta manter as plantinhas com os cuidados em dia, regando e adubando quando necessário!',
 }
