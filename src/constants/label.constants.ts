@@ -22,5 +22,6 @@ export const Labels = {
     changeSoil: 'Troca de Terra',
     fertilizer2: 'Fertilizante',
     cancel: 'Cancelar',
+    confirm: 'Confirm',
     delete: 'Deletar Planta'
 }

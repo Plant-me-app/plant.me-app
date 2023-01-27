@@ -12,6 +12,7 @@ import { MaterialIcons } from "@expo/vector-icons";
 import { Colors } from "../../configs/colors";
 import { TaskTypes } from "../../constants/taskTypes.enum";
 import {
+  deleteTaskHistory,
   getTaskButtonEnabled,
   saveTaskHistory,
 } from "../../services/plant.service";
@@ -54,36 +55,55 @@ const PlantDetails = ({ navigation, route }): React.ReactElement => {
   const taskElementMap = {
     [TaskTypes.Water]: (
       <TaskModalContent
-        history={formatDate(plantData["details"]?.water.lastDate)}
+        history={plantData["details"]?.water.lastDate[0]}
         taskType={TaskTypes.Water}
         isButtonEnabled={waterButton}
         onPress={() => onTaskComplete(TaskTypes.Water)}
+        onPressDelete={() => deleteTask(plant._id, TaskTypes.Water)}
+        onPressCancel={() => setOpenModal(false)}
+        isOpen={openModal}
       />
     ),
     [TaskTypes.Soil]: (
       <TaskModalContent
-        history={formatDate(plantData["details"]?.soil.lastDate)}
+        history={plantData["details"]?.soil.lastDate[0]}
         taskType={TaskTypes.Soil}
         isButtonEnabled={soilButton}
         onPress={() => onTaskComplete(TaskTypes.Soil)}
+        onPressDelete={() => deleteTask(plant._id, TaskTypes.Soil)}
+        onPressCancel={() => setOpenModal(false)}
+        isOpen={openModal}
       />
     ),
     [TaskTypes.Light]: (
       <TaskModalContent
-        history={formatDate(plantData["details"]?.light.lastDate)}
+        history={plantData["details"]?.light.lastDate[0]}
         taskType={TaskTypes.Light}
         isButtonEnabled={lightButton}
         onPress={() => onTaskComplete(TaskTypes.Light)}
+        onPressDelete={() => deleteTask(plant._id, TaskTypes.Light)}
+        onPressCancel={() => setOpenModal(false)}
+        isOpen={openModal}
       />
     ),
     [TaskTypes.Fertilizer]: (
       <TaskModalContent
-        history={formatDate(plantData["details"]?.fertilizer.lastDate)}
+        history={plantData["details"]?.fertilizer.lastDate[0]}
         taskType={TaskTypes.Fertilizer}
         isButtonEnabled={fertilizerButton}
         onPress={() => onTaskComplete(TaskTypes.Fertilizer)}
+        onPressDelete={() => deleteTask(plant._id, TaskTypes.Fertilizer)}
+        onPressCancel={() => setOpenModal(false)}
+        isOpen={openModal}
       />
     ),
+  };
+
+  const deleteTask = async (id, type) => {
+    setLoading(true);
+    await deleteTaskHistory(id, type);
+    setOpenModal(false);
+    setLoading(false);
   };
   const onBack = () => {
     navigation.goBack();
@@ -111,8 +131,9 @@ const PlantDetails = ({ navigation, route }): React.ReactElement => {
       <TaskModalContent
         plantName={plant.name}
         taskType={taskType}
-        isButtonVisible={false}
+        isButtonEnabled={false}
         isSuccess={true}
+        isOpen={openModal}
       />
     </>
   );
