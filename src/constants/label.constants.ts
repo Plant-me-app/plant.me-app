@@ -23,6 +23,7 @@ export const Labels = {
     fertilizer2: 'Fertilizante',
     cancel: 'Cancelar',
     delete: 'Deletar Planta',
+    confirm: 'Confirmar',
     splashScreenNext: 'Continuar',
     splashScreenDone: 'Vamos Começar!',
     splashScreenSkip: 'Pular',

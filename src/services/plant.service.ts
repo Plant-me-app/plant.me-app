@@ -46,6 +46,15 @@ export const saveTaskHistory = async (id: number, task: TaskTypes) => {
     }) 
 }
 
+export const deleteTaskHistory = async (id: number, task: TaskTypes) => {
+    const result = await api.put(`/plants/${id}/task`, {task, toRemove: true});
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            resolve(result);
+        }, 500)
+    }) 
+}
+
 export const getTaskButtonEnabled = async (id: number) => {
     return await api.get(`/plants/${id}/task/enable`);
 }

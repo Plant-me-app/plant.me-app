@@ -45,7 +45,21 @@ export const styles = StyleSheet.create({
         position: 'absolute',
         left: hp('2%'),
         bottom: hp('1%')
-    }
+    },
+
+    deleteButtons: {
+        flexDirection: 'row',
+        width: wp('80%'),
+        justifyContent: 'space-evenly',
+    },
+
+    deleteText: {
+        ...fontStyles.modalInfo,
+        fontSize: wp('4%'),
+        textAlign: 'center',
+        marginBottom: hp('3%'),
+        width: wp('80%')
+    },
 })
 
 export const customStyles = (buttonColor) => StyleSheet.create({
