@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { View, Text, Image, AsyncStorage } from 'react-native';
+import React from 'react';
+import { View, Text, Image, AsyncStorage,  } from 'react-native';
 import AppIntroSlider from 'react-native-app-intro-slider';
 import { styles } from './styles';
 import { Colors } from "../../configs/colors";
@@ -30,8 +30,8 @@ const SplashView = ({ navigation }): React.ReactElement => {
 	}];
 
 	const onDone = () => {
-		navigation.navigate("TabNavigator");
-  };
+		navigation.replace("TabNavigator");
+  }
 
 	const renderItem = ({ item }) => {
 		return (
@@ -54,12 +54,6 @@ const SplashView = ({ navigation }): React.ReactElement => {
   const renderDoneButton = () => {
     return (
 			<View>
-      {/* <View style={styles.doneBtn}> 
-        <Button 
-					onPress={() => "clicou"}
-					title={Labels.splashScreenDone}
-					type={buttonTypes.Primary}
-				/> */}
 				<Text style={styles.doneBtn}>{Labels.splashScreenDone}</Text>
       </View>
     );
