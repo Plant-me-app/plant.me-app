@@ -15,8 +15,6 @@ import PlantDetails from "../../../views/PlantDetails";
 const Tab = createBottomTabNavigator();
 const HomeStack = createNativeStackNavigator();
 
-const PlantStack = createNativeStackNavigator();
-
 function HomeStackScreen() {
   return (
     <HomeStack.Navigator screenOptions={{ headerShown: false }}>

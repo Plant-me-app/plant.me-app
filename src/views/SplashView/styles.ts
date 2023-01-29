@@ -51,7 +51,8 @@ export const styles = StyleSheet.create({
   },
   activeDotStyle: {
     backgroundColor: Colors.green_hunter,
-    marginBottom: hp("20%")
+    marginBottom: hp("20%"),
+    width: wp("5%")
   },
   dotStyle: {
     backgroundColor: Colors.grey_light,

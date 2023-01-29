@@ -1,16 +1,11 @@
 import React, { useState } from 'react';
-import { View, Text, Image } from 'react-native';
+import { View, Text, Image, AsyncStorage } from 'react-native';
 import AppIntroSlider from 'react-native-app-intro-slider';
 import { styles } from './styles';
 import { Colors } from "../../configs/colors";
 import { Labels } from "../../constants/label.constants";
-import Button from '../../components/Button';
-import { buttonTypes } from "../../constants/buttonsTypes.enum";
-import RootNavigator from '../../routes/navigation/rootNavigator';
-import App from '../../../App';
 
-const SplashView = ({showSplashScreen, setSplashScreen}): React.ReactElement => {
-	console.log("showSplashScreen:", showSplashScreen)
+const SplashView = ({ navigation }): React.ReactElement => {
 
 	const slides = [{
 		key: 's1',
@@ -35,15 +30,7 @@ const SplashView = ({showSplashScreen, setSplashScreen}): React.ReactElement => 
 	}];
 
 	const onDone = () => {
-    setSplashScreen(false);
-		console.log("foi pra home");
-		return <RootNavigator />;
-  };
-
-  const onSkip = () => {
-    setSplashScreen(false);
-		console.log("pulou");
-		console.log("showSplashScreen:", showSplashScreen)
+		navigation.navigate("TabNavigator");
   };
 
 	const renderItem = ({ item }) => {
@@ -89,7 +76,7 @@ const SplashView = ({showSplashScreen, setSplashScreen}): React.ReactElement => 
 			data={slides}
 			renderItem={renderItem}
 			onDone={onDone}
-			onSkip={onSkip}
+			onSkip={onDone}
 			showSkipButton={true}
       renderNextButton={renderNextButton}
 			renderDoneButton={renderDoneButton}
