@@ -23,5 +23,10 @@ export const Labels = {
     fertilizer2: 'Fertilizante',
     cancel: 'Cancelar',
     confirm: 'Confirmar',
-    delete: 'Deletar Planta'
+    delete: 'Deletar Planta',
+    profile: 'Perfil',
+    achievements: 'Conquistas',
+    editProfile: 'Editar Perfil',
+    configs: 'Configurações',
+    exit: 'Sair da Conta'
 }
