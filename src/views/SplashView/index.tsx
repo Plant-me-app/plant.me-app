@@ -54,8 +54,10 @@ const SplashView = ({ navigation }): React.ReactElement => {
 
   const renderDoneButton = () => {
     return (
-      <View>
-        <Text style={styles.doneBtn}>{Labels.splashScreenDone}</Text>
+      <View style={styles.buttonWrapper}>
+        <View style={styles.doneBtnContainer}>
+          <Text style={styles.doneBtnText}>{Labels.splashScreenDone}</Text>
+        </View>
       </View>
     );
   };

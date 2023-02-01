@@ -5,7 +5,7 @@ import { fontStyles } from "../../configs/fontStyle";
 
 export const styles = StyleSheet.create({
   splashContainer: {
-    flex: 1, 
+    flex: 1,
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',
@@ -23,20 +23,28 @@ export const styles = StyleSheet.create({
   },
   text: {
     ...fontStyles.default,
+    width: wp('95%'),
     alignSelf: 'center',
     textAlign: 'center',
   },
-  doneBtn: {
+  buttonWrapper: {
+    width: wp('100%'),
+    left: wp('4.5%'),
+    flexDirection: 'row',
+    justifyContent: 'center',
+    
+  },
+  doneBtnContainer: {
     backgroundColor: Colors.green_sap,
     borderRadius: 8,
     height: hp("5%"),
     width: wp("50%"),
-    flex: 1,
-    textAlign: 'center',
-    textAlignVertical: 'center',
-    color: Colors.white,
+    justifyContent: 'center',
+  },
+  doneBtnText: {
     ...fontStyles.smallButton,
-    marginRight: hp("10%"),
+    textAlign: 'center',
+    color: Colors.white,
   },
   nextLink: {
     ...fontStyles.link,
@@ -46,7 +54,6 @@ export const styles = StyleSheet.create({
   skipLink: {
     ...fontStyles.link,
     color: Colors.green_hunter,
-    flex: 1,
     alignSelf: 'flex-start'
   },
   activeDotStyle: {
