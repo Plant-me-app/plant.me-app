@@ -13,8 +13,8 @@ const RootNavigator = (): React.ReactElement => {
   useEffect(() => {
     const fetchData = async () => {
       // AsyncStorage.clear();
-      const appData = await AsyncStorage.getItem("isAppFirstLaunch");
-      if (appData == null) {
+      const appFirstLaunch = await AsyncStorage.getItem("isAppFirstLaunch");
+      if (appFirstLaunch === null) {
         setIsAppFirstLaunch(true);
         AsyncStorage.setItem("isAppFirstLaunch", "false");
       } else {
