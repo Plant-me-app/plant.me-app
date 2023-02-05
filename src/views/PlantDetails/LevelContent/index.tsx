@@ -4,37 +4,55 @@ import { styles } from "./styles";
 import { AnimatedCircularProgress } from "react-native-circular-progress";
 import { Colors } from "../../../configs/colors";
 
-const B = (props) => (
-  <Text style={{ fontWeight: "bold" }}>{props.children}</Text>
-);
-
 const LevelContent = ({ plant, open }): React.ReactElement => {
   const circularProgress = useRef<AnimatedCircularProgress>();
   const [level, setLevel] = useState(plant["score"]?.level);
-  const [points, setPoints] = useState(plant["score"]?.points);
+
+  const loadFirstLevel = () => {
+    const porcentage = plant["score"]?.points * 20;
+    const currPoints = plant["score"]?.points;
+    if (currPoints === 0) {
+      circularProgress.current.animate(porcentage + 5, 2000).start();
+    } else {
+      circularProgress.current.animate(porcentage, 2000).start();
+    }
+  };
+
+  const loadOtherLevels = () => {
+    const porcentage = plant["score"]?.points * 10;
+    const currLevel = plant["score"]?.level;
+    const currPoints = plant["score"]?.points;
+    if (currPoints === 0) {
+      setLevel(() => currLevel - 1);
+      circularProgress.current.animate(100, 2000).start(({ finished }) => {
+        if (finished) {
+          setLevel((prevLevel) => prevLevel + 1);
+          circularProgress.current.animate(porcentage + 5, 2000).start();
+        }
+      });
+    } else {
+      circularProgress.current.animate(porcentage, 2000);
+    }
+  };
+
+  const handleLevels = () => {
+    const currLevel = plant["score"]?.level;
+    setLevel(() => plant["score"]?.level);
+    if (open) {
+      if (currLevel > 0) {
+        loadOtherLevels();
+      }
+      if (currLevel === 0) {
+        loadFirstLevel();
+      }
+    }
+  };
   useEffect(() => {
     if (circularProgress.current) {
       circularProgress.current.animate(0, 0);
     }
     if (Object.keys(plant).length > 0) {
-      const porcentage = plant["score"]?.points * 10;
-      const currLevel = plant["score"]?.level;
-      const currPoints = plant["score"]?.points;
-      setLevel(() => plant["score"]?.level);
-      setPoints(() => plant["score"]?.points);
-      if (open) {
-        if (currLevel > 0 && currPoints === 0) {
-          setLevel(() => currLevel - 1);
-          circularProgress.current.animate(100, 2000).start(({ finished }) => {
-            if (finished) {
-              setLevel((prevLevel) => prevLevel + 1);
-              circularProgress.current.animate(porcentage + 5, 2000).start();
-            }
-          });
-        } else {
-          circularProgress.current.animate(porcentage, 2000);
-        }
-      }
+      handleLevels();
     }
   }, [open]);
   return (
