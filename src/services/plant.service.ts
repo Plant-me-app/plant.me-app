@@ -58,3 +58,11 @@ export const deleteTaskHistory = async (id: number, task: TaskTypes) => {
 export const getTaskButtonEnabled = async (id: number) => {
     return await api.get(`/plants/${id}/task/enable`);
 }
+
+export const updatePlantScore = async (id: number) => {
+    return await api.put(`/plants/${id}/score`);
+}
+
+export const getPlantScore = async (id: number) => {
+    return await api.get(`/plants/${id}/score`);   
+}

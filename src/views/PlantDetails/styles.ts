@@ -60,6 +60,22 @@ export const styles = StyleSheet.create({
         height: wp('12%')
     },
 
+    levelIcon: {
+        width: wp('12%'),
+        height: wp('12%'),
+        borderColor: Colors.green_hunter,
+        borderWidth: 5,
+        borderRadius: 30,
+        justifyContent: 'center'
+    },
+
+    levelText: {
+        textAlign: 'center',
+        color: Colors.green_hunter,
+        fontSize: 25,
+        fontWeight: "800"
+    },
+
     iconSubtitle: {
         ...fontStyles.subtitle,
         paddingTop: hp('1%'),
