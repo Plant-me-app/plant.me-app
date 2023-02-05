@@ -15,6 +15,7 @@ import {
   deleteTaskHistory,
   getTaskButtonEnabled,
   saveTaskHistory,
+  updatePlantScore,
 } from "../../services/plant.service";
 
 import Modal from "../../components/Modal";
@@ -23,14 +24,15 @@ import TaskIcon from "./TaskIcon";
 import TaskModalContent from "./TaskModalContent";
 import { taskIcons } from "../../constants/taskIcons";
 import { getPlantById } from "../../services/plant.service";
+import LevelContent from "./LevelContent";
 
 const editIcon = require("../../assets/images/Details/Edit.png");
 const infoIcon = require("../../assets/images/Details/Info.png");
-const level1Icon = require("../../assets/images/Details/Level1.png");
 
 const PlantDetails = ({ navigation, route }): React.ReactElement => {
   const { plant } = route?.params;
   const [modalInfo, setModalInfo] = useState(false);
+  const [modalLevel, setModalLevel] = useState(false);
   const [openModal, setOpenModal] = useState(false);
   const [taskModelContent, setTaskModelContent] = useState(null);
   const [taskOpen, setTaskOpen] = useState(null);
@@ -40,17 +42,6 @@ const PlantDetails = ({ navigation, route }): React.ReactElement => {
   const [lightButton, setLightButton] = useState(false);
   const [fertilizerButton, setFertilizerButton] = useState(false);
   const [plantData, setPlantData] = useState({});
-
-  const formatDate = (lastDate) => {
-    if (!lastDate) return "Sem Registro";
-    const date = new Date(lastDate[0]);
-    const day = date.getUTCDate();
-    const month = date.getMonth() + 1;
-    const year = date.getFullYear();
-    const formatDate = `${day}/${month}/${year}`;
-
-    return formatDate;
-  };
 
   const taskElementMap = {
     [TaskTypes.Water]: (
@@ -140,7 +131,9 @@ const PlantDetails = ({ navigation, route }): React.ReactElement => {
 
   const onTaskComplete = async (taskType: TaskTypes) => {
     setLoading(true);
-    await saveTaskHistory(plant._id, taskType);
+    await saveTaskHistory(plant._id, taskType).then(() => {
+      updatePlantScore(plant._id);
+    });
     setTaskModelContent(taskCompleteContet(taskType));
     setLoading(false);
   };
@@ -164,6 +157,11 @@ const PlantDetails = ({ navigation, route }): React.ReactElement => {
   const loadPlant = async () => {
     const response = await getPlantById(plant._id);
     setPlantData(response.data.data);
+  };
+
+  const onModalLevelPress = async () => {
+    await loadPlant();
+    setModalLevel(true);
   };
 
   useEffect(() => {
@@ -193,8 +191,13 @@ const PlantDetails = ({ navigation, route }): React.ReactElement => {
               <Image source={infoIcon} style={styles.detailsIcons} />
               <Text style={styles.iconSubtitle}>{Labels.infos}</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={styles.iconContainer}>
-              <Image source={level1Icon} style={styles.detailsIcons} />
+            <TouchableOpacity
+              style={styles.iconContainer}
+              onPress={() => onModalLevelPress()}
+            >
+              <View style={styles.levelIcon}>
+                <Text style={styles.levelText}>{plant.score.level}</Text>
+              </View>
               <Text style={styles.iconSubtitle}>{Labels.level}</Text>
             </TouchableOpacity>
             <TouchableOpacity
@@ -225,6 +228,13 @@ const PlantDetails = ({ navigation, route }): React.ReactElement => {
         handleClose={() => setModalInfo(false)}
       >
         <InfoContent plant={plant} />
+      </Modal>
+      <Modal
+        visible={modalLevel}
+        handleOpen={() => setModalLevel(true)}
+        handleClose={() => setModalLevel(false)}
+      >
+        <LevelContent plant={plantData} open={modalLevel} />
       </Modal>
       <Modal
         visible={openModal}
