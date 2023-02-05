@@ -1,6 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Text, View } from "react-native";
-import { Labels } from "../../../constants/label.constants";
 import { styles } from "./styles";
 import { AnimatedCircularProgress } from "react-native-circular-progress";
 import { Colors } from "../../../configs/colors";
@@ -19,11 +18,13 @@ const LevelContent = ({ plant, open }): React.ReactElement => {
     }
     if (Object.keys(plant).length > 0) {
       const porcentage = plant["score"]?.points * 10;
-      setLevel(plant["score"]?.level);
-      setPoints(plant["score"]?.points);
+      const currLevel = plant["score"]?.level;
+      const currPoints = plant["score"]?.points;
+      setLevel(() => plant["score"]?.level);
+      setPoints(() => plant["score"]?.points);
       if (open) {
-        if (level > 0 && points === 0) {
-          setLevel((prevLevel) => prevLevel - 1);
+        if (currLevel > 0 && currPoints === 0) {
+          setLevel(() => currLevel - 1);
           circularProgress.current.animate(100, 2000).start(({ finished }) => {
             if (finished) {
               setLevel((prevLevel) => prevLevel + 1);
