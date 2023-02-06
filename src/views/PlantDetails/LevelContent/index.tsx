@@ -3,6 +3,8 @@ import { Text, View } from "react-native";
 import { styles } from "./styles";
 import { AnimatedCircularProgress } from "react-native-circular-progress";
 import { Colors } from "../../../configs/colors";
+import { widthPercentageToDP as wp } from "react-native-responsive-screen";
+import { Messages } from "../../../constants/messages.constants";
 
 const LevelContent = ({ plant, open }): React.ReactElement => {
   const circularProgress = useRef<AnimatedCircularProgress>();
@@ -63,19 +65,25 @@ const LevelContent = ({ plant, open }): React.ReactElement => {
             <Text style={styles.title}>Nível {plant.name}</Text>
           </View>
           <View style={styles.bodyContainer}>
-            <AnimatedCircularProgress
-              size={100}
-              width={10}
-              fill={plant["score"]?.points}
-              lineCap="round"
-              rotation={360}
-              tintColor={Colors.green_hunter}
-              ref={(ref) => (circularProgress.current = ref)}
-            >
-              {() => <Text style={styles.scoreText}>{level}</Text>}
-            </AnimatedCircularProgress>
-            <Text>Pontos para o próximo nível: X</Text>
-            <Text>Desbloqueia um novo avatar!</Text>
+            <View style={styles.progressCircle}>
+              <AnimatedCircularProgress
+                size={wp("25%")}
+                width={wp("2.5%")}
+                fill={plant["score"]?.points}
+                lineCap="round"
+                rotation={360}
+                tintColor={Colors.green_hunter}
+                ref={(ref) => (circularProgress.current = ref)}
+              >
+                {() => <Text style={styles.scoreText}>{level}</Text>}
+              </AnimatedCircularProgress>
+            </View>
+            <View style={styles.content}>
+              <Text style={styles.contentText}>
+                {Messages.levelMessage1} {plant["score"]?.pointsToNextLevel}
+              </Text>
+              <Text style={styles.contentText}>{Messages.levelMessage2}</Text>
+            </View>
           </View>
         </>
       )}

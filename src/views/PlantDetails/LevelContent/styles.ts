@@ -5,17 +5,21 @@ import { fontStyles } from "../../../configs/fontStyle";
 
 export const styles = StyleSheet.create({
     bodyContainer: {
-        paddingLeft: wp('5%'),
-        paddingRight: wp('3%')
+        width: wp('100%'),
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'space-around',
+        paddingBottom: hp('2%'),
     },
 
     title: {
         ...fontStyles.modal,
-        textAlign: 'center'
+        textAlign: 'center',
+        fontSize: hp('2.5%')
     },
 
     header: {
-        paddingBottom: hp('3%')
+        
     },
 
     infoContentText: {
@@ -24,20 +28,23 @@ export const styles = StyleSheet.create({
     },
 
     progressCircle: {
-        width: wp('20%'),
-        height: wp('20%'),
-        borderColor: Colors.green_hunter,
-        borderWidth: 10,
-        borderRadius: wp('100%'),
-        borderLeftColor: 'transparent',
-    borderBottomColor: 'transparent',
-        transform:[{rotateZ: '50deg'}]
+        paddingLeft: wp('2%')
     },
 
     scoreText: {
-        fontSize: 40,
+        fontSize: wp('12%'),
         color: Colors.green_hunter,
         fontWeight: "800"
+    },
+
+    content: {
+        width: wp('65%')
+        
+    },
+
+    contentText: {
+        ...fontStyles.modalInfo,
+        fontSize: wp('4%')
     }
 
 })
