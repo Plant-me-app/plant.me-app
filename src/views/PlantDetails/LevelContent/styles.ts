@@ -18,10 +18,6 @@ export const styles = StyleSheet.create({
         fontSize: hp('2.5%')
     },
 
-    header: {
-        
-    },
-
     infoContentText: {
         ...fontStyles.modalInfo,
         paddingBottom: hp('1%')
@@ -39,7 +35,6 @@ export const styles = StyleSheet.create({
 
     content: {
         width: wp('65%')
-        
     },
 
     contentText: {
