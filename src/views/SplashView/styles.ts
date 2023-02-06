@@ -37,8 +37,8 @@ export const styles = StyleSheet.create({
   doneBtnContainer: {
     backgroundColor: Colors.green_sap,
     borderRadius: 8,
-    height: hp("5%"),
     width: wp("50%"),
+    height: hp("5%"),
     justifyContent: 'center',
   },
   doneBtnText: {
