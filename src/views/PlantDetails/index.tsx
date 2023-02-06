@@ -92,7 +92,9 @@ const PlantDetails = ({ navigation, route }): React.ReactElement => {
 
   const deleteTask = async (id, type) => {
     setLoading(true);
-    await deleteTaskHistory(id, type);
+    await deleteTaskHistory(id, type).then(() => {
+      updatePlantScore(plant._id, true);
+    });
     setOpenModal(false);
     setLoading(false);
   };
@@ -117,7 +119,7 @@ const PlantDetails = ({ navigation, route }): React.ReactElement => {
     </>
   );
 
-  const taskCompleteContet = (taskType) => (
+  const taskCompleteContent = (taskType) => (
     <>
       <TaskModalContent
         plantName={plant.name}
@@ -132,9 +134,9 @@ const PlantDetails = ({ navigation, route }): React.ReactElement => {
   const onTaskComplete = async (taskType: TaskTypes) => {
     setLoading(true);
     await saveTaskHistory(plant._id, taskType).then(() => {
-      updatePlantScore(plant._id);
+      updatePlantScore(plant._id, false);
     });
-    setTaskModelContent(taskCompleteContet(taskType));
+    setTaskModelContent(taskCompleteContent(taskType));
     setLoading(false);
   };
 
@@ -196,7 +198,11 @@ const PlantDetails = ({ navigation, route }): React.ReactElement => {
               onPress={() => onModalLevelPress()}
             >
               <View style={styles.levelIcon}>
-                <Text style={styles.levelText}>{plant.score.level}</Text>
+                <Text style={styles.levelText}>
+                  {plantData["score"]
+                    ? plantData["score"].level
+                    : plant["score"].level}
+                </Text>
               </View>
               <Text style={styles.iconSubtitle}>{Labels.level}</Text>
             </TouchableOpacity>
