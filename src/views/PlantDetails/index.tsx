@@ -98,6 +98,7 @@ const PlantDetails = ({ navigation, route }): React.ReactElement => {
     setOpenModal(false);
     setLoading(false);
   };
+
   const onBack = () => {
     navigation.goBack();
   };
