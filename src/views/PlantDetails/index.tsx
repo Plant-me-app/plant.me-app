@@ -106,6 +106,10 @@ const PlantDetails = ({ navigation, route }): React.ReactElement => {
     navigation.navigate("EditPlant", { edition: true, plantSelected: plant });
   };
 
+  const openHistory = () => {
+    navigation.navigate("PlantHistory", { plant: plantData });
+  };
+
   const TaskIcons = () => (
     <>
       {taskIcons.map(({ icon, label, task }) => (
@@ -222,7 +226,7 @@ const PlantDetails = ({ navigation, route }): React.ReactElement => {
             <TaskIcons />
           </View>
           <View>
-            <TouchableOpacity>
+            <TouchableOpacity onPress={() => openHistory()}>
               <Text style={styles.link}>{Labels.seeHistory}</Text>
             </TouchableOpacity>
           </View>
