@@ -29,7 +29,6 @@ export const styles = StyleSheet.create({
         flexDirection: 'column',
         justifyContent: 'center',
         height: hp("10%"),
-        marginTop: hp("5%"),
     },
 
     headerTitle: {
@@ -38,5 +37,20 @@ export const styles = StyleSheet.create({
         paddingBottom: hp("3%"),
         fontSize: hp("4%"),
         alignSelf: 'center',
+    },
+
+    backBtnContainer: {
+        height: hp('3%'),
+        marginTop: hp('5%'),
+        marginLeft: wp('3%')
+    },
+
+    backLabel: {
+        flexDirection: 'row'
+    },
+
+    link: {
+        ...fontStyles.link,
+        color: Colors.white
     },
 })
