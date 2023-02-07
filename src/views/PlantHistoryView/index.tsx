@@ -1,11 +1,13 @@
 import React, { useEffect } from "react";
+import { useNavigation } from "@react-navigation/native";
 import { Text, TouchableOpacity, View } from "react-native";
 import { MaterialIcons } from "@expo/vector-icons";
 import { styles } from "./styles";
 import { Colors } from "../../configs/colors";
 import { Labels } from "../../constants/label.constants";
 
-const PlantHistoryView = ({ navigation }): React.ReactElement => {
+const PlantHistoryView = (): React.ReactElement => {
+  const navigation = useNavigation();
   useEffect(() => {});
 
   const onBack = () => {
