@@ -3,7 +3,12 @@ import { View, TextInput, Image } from "react-native";
 import { Labels } from "../../constants/label.constants";
 import { styles } from "./styles";
 
-const SearchBar = (): React.ReactElement => {
+interface ISearchBar {
+  onChangeText: (text) => void;
+  input: string;
+}
+
+const SearchBar = ({ onChangeText, input }: ISearchBar): React.ReactElement => {
   const search = require("../../assets/images/Search.png");
 
   return (
@@ -14,6 +19,8 @@ const SearchBar = (): React.ReactElement => {
       <TextInput
         style={styles.input}
         placeholder={Labels.searchBarPlaceholder}
+        onChangeText={onChangeText}
+        value={input}
       ></TextInput>
     </View>
   );
