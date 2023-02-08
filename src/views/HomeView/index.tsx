@@ -21,6 +21,8 @@ const HomeView = ({ navigation }): React.ReactElement => {
 
   const [plants, setPlants] = useState([]);
   const [refreshing, setRefreshing] = useState(false);
+  const [search, setSearch] = useState("");
+  const [filtered, setFiltered] = useState(plants);
 
   useEffect(() => {
     const loadWhenNavigate = navigation.addListener("focus", () => {
@@ -44,13 +46,18 @@ const HomeView = ({ navigation }): React.ReactElement => {
     wait(1000).then(() => loadPlants().then(() => setRefreshing(false)));
   }, []);
 
+  const handleChange = (text) => {
+    setSearch(text);
+    setFiltered(plants.filter((plant) => plant.name.includes(text)));
+  };
+
   return (
     <View style={styles.container}>
       <View style={styles.header}>
         <Text style={styles.headerTitle}>{Labels.homeHeader}</Text>
       </View>
       <View style={styles.searchContainer}>
-        <SearchBar />
+        <SearchBar onChangeText={handleChange} input={search} />
       </View>
       {plants.length === 0 && (
         <View style={styles.emptyBody}>
@@ -69,9 +76,9 @@ const HomeView = ({ navigation }): React.ReactElement => {
             }
           >
             <View style={styles.body}>
-              {sortByCreatedDate(plants).map((plant, i) => (
+              {sortByCreatedDate(filtered).map((plant, index) => (
                 <TouchableOpacity
-                  key={i}
+                  key={index}
                   onPress={() =>
                     navigation.navigate("PlantDetails", { plant: plant })
                   }
