@@ -27,6 +27,8 @@ const HomeView = ({ navigation }): React.ReactElement => {
   useEffect(() => {
     const loadWhenNavigate = navigation.addListener("focus", () => {
       loadPlants();
+      setSearch("");
+      setFiltered(plants);
     });
     loadPlants();
     return loadWhenNavigate;
