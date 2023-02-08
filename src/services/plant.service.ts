@@ -66,3 +66,7 @@ export const updatePlantScore = async (id: number, toRemove: boolean) => {
 export const getPlantScore = async (id: number) => {
     return await api.get(`/plants/${id}/score`);   
 }
+
+export const getPlantHistory = async (id: number) => {
+    return await api.get(`/plants/${id}/history`);
+}
