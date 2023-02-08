@@ -15,6 +15,7 @@ import LeafButton from "../../../components/LeafButton";
 import PlantDetails from "../../../views/PlantDetails";
 import PlantHistoryView from "../../../views/PlantHistoryView";
 import TaskHistory from "../../../views/PlantHistoryView/TaskHistory";
+import { PlantContextProvider } from "../../../contexts/PlantContext";
 
 const BottomTab = createBottomTabNavigator();
 const HomeStack = createNativeStackNavigator();
@@ -32,7 +33,9 @@ function HistoryTopTabScreen() {
     <>
       <PlantHistoryView />
       <TopTab.Navigator
+        id="TopTab"
         screenOptions={{
+          lazy: false,
           tabBarActiveTintColor: Colors.green_phthalo,
           tabBarIndicatorStyle: { backgroundColor: Colors.green_phthalo },
           tabBarStyle: {
@@ -43,7 +46,7 @@ function HistoryTopTabScreen() {
         {historyTabs.map(({ name, label, task }) => {
           return (
             <TopTab.Screen
-              key={name}
+              key={label}
               name={name}
               component={TaskHistory}
               initialParams={{ task: task }}
@@ -60,12 +63,14 @@ function HistoryTopTabScreen() {
 
 function HomeStackScreen() {
   return (
-    <HomeStack.Navigator screenOptions={{ headerShown: false }}>
-      <HomeStack.Screen name="HomeView" component={HomeView} />
-      <HomeStack.Screen name="PlantDetails" component={PlantDetails} />
-      <HomeStack.Screen name="EditPlant" component={NewPlantView} />
-      <HomeStack.Screen name="PlantHistory" component={HistoryTopTabScreen} />
-    </HomeStack.Navigator>
+    <PlantContextProvider>
+      <HomeStack.Navigator screenOptions={{ headerShown: false }}>
+        <HomeStack.Screen name="HomeView" component={HomeView} />
+        <HomeStack.Screen name="PlantDetails" component={PlantDetails} />
+        <HomeStack.Screen name="EditPlant" component={NewPlantView} />
+        <HomeStack.Screen name="PlantHistory" component={HistoryTopTabScreen} />
+      </HomeStack.Navigator>
+    </PlantContextProvider>
   );
 }
 

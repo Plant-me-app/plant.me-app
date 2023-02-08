@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import {
   Image,
   View,
@@ -25,6 +25,7 @@ import TaskModalContent from "./TaskModalContent";
 import { taskIcons } from "../../constants/taskIcons";
 import { getPlantById } from "../../services/plant.service";
 import LevelContent from "./LevelContent";
+import { PlantContext } from "../../contexts/PlantContext";
 
 const editIcon = require("../../assets/images/Details/Edit.png");
 const infoIcon = require("../../assets/images/Details/Info.png");
@@ -42,6 +43,7 @@ const PlantDetails = ({ navigation, route }): React.ReactElement => {
   const [lightButton, setLightButton] = useState(false);
   const [fertilizerButton, setFertilizerButton] = useState(false);
   const [plantData, setPlantData] = useState({});
+  const { setPlantContext } = useContext(PlantContext);
 
   const taskElementMap = {
     [TaskTypes.Water]: (
@@ -108,7 +110,8 @@ const PlantDetails = ({ navigation, route }): React.ReactElement => {
   };
 
   const openHistory = () => {
-    navigation.navigate("PlantHistory", { plant: plantData });
+    setPlantContext(plantData);
+    navigation.navigate("PlantHistory");
   };
 
   const TaskIcons = () => (
