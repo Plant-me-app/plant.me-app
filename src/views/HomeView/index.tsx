@@ -31,6 +31,7 @@ const HomeView = ({ navigation }): React.ReactElement => {
       setFiltered(plants);
     });
     loadPlants();
+    setSearch("");
     return loadWhenNavigate;
   }, [navigation]);
 
@@ -41,6 +42,7 @@ const HomeView = ({ navigation }): React.ReactElement => {
   const loadPlants = async () => {
     const response = await getPlants();
     setPlants(response.data.data);
+    setFiltered(response.data.data);
   };
 
   const onRefresh = useCallback(() => {
