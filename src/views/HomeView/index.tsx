@@ -48,7 +48,12 @@ const HomeView = ({ navigation }): React.ReactElement => {
 
   const handleChange = (text) => {
     setSearch(text);
-    setFiltered(plants.filter((plant) => plant.name.includes(text)));
+    setFiltered(
+      plants.filter((plant) => {
+        const lowerCaseName = plant.name.toLowerCase();
+        return lowerCaseName.includes(text.toLowerCase());
+      })
+    );
   };
 
   return (
