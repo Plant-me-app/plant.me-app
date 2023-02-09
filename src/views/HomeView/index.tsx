@@ -68,6 +68,13 @@ const HomeView = ({ navigation }): React.ReactElement => {
       <View style={styles.searchContainer}>
         <SearchBar onChangeText={handleChange} input={search} />
       </View>
+      {filtered.length === 0 && (
+        <View style={styles.emptyBody}>
+          <View style={styles.labelContainer}>
+            <Text style={styles.emptyLabel}>{Labels.noPlantFound}</Text>
+          </View>
+        </View>
+      )}
       {plants.length === 0 && (
         <View style={styles.emptyBody}>
           <Image source={emptyScreen} style={styles.emptyImage} />

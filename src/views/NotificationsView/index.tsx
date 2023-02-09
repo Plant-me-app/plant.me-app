@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Image, ScrollView, Text, View } from "react-native";
+import { Labels } from "../../constants/label.constants";
 import { getNotifications } from "../../services/notification";
 import { styles } from "./styles";
 
@@ -35,7 +36,7 @@ const NotificationView = ({ navigation }): React.ReactElement => {
   return (
     <View style={styles.container}>
       <View style={styles.header}>
-        <Text style={styles.headerTitle}>Notificações</Text>
+        <Text style={styles.headerTitle}>{Labels.notifications}</Text>
       </View>
       <View style={styles.body}>
         <ScrollView style={{ flex: 1 }}>
