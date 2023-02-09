@@ -86,6 +86,7 @@ const TabNavigator = (): React.ReactElement => {
         name="Home"
         component={HomeStackScreen}
         options={{
+          unmountOnBlur: true,
           tabBarIcon: ({ focused }) => (
             <MaterialIcons
               name="home-filled"
