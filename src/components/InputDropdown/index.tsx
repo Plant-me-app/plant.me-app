@@ -8,6 +8,7 @@ interface IDropdown {
   placeholder: string;
   onSelect?: (item) => void;
   itemSelected?: {};
+  isSpecies?: boolean;
 }
 
 const InputDropdown = ({
@@ -15,7 +16,19 @@ const InputDropdown = ({
   placeholder,
   onSelect,
   itemSelected,
+  isSpecies = false,
 }: IDropdown): React.ReactElement => {
+  const sortSpeciesByName = () => {
+    if (isSpecies) {
+      items.sort((a, b) => {
+        if (a.name < b.name) return -1;
+        if (a.name > b.name) return 1;
+        return 0;
+      });
+    }
+    return items;
+  };
+
   return (
     <View style={styles.container}>
       <View style={styles.inputContainer}>
@@ -27,7 +40,7 @@ const InputDropdown = ({
           itemStyle={styles.item}
           itemTextStyle={styles.itemText}
           itemsContainerStyle={styles.itemsContainer}
-          items={items}
+          items={sortSpeciesByName()}
           defaultIndex={0}
           resetValue={false}
           textInputProps={{

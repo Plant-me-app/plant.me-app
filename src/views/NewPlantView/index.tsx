@@ -167,6 +167,7 @@ const NewPlantView = ({ route, navigation }): React.ReactElement => {
           />
           <InputDropdown
             items={plants}
+            isSpecies={true}
             placeholder="Espécie"
             onSelect={onSelectSpecies}
             itemSelected={species}
