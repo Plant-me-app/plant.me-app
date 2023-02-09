@@ -6,51 +6,33 @@ import { Size } from "../../configs/sizes";
 
 export const styles = StyleSheet.create({
     container: {
-        flex: 0.4,
+        flex: 1,
         backgroundColor: Colors.green_hunter
+    },
+
+    header: {
+        flexDirection: 'column',
+        justifyContent: 'center',
+        height: hp("13%"),
+        marginTop: hp("3%"),
     },
     
     body: {
         flex: 1,
         backgroundColor: Colors.white,
         borderTopLeftRadius: Size.SIZE_20,
-        borderTopRightRadius: Size.SIZE_20,
-        flexDirection: 'column',
-        justifyContent: 'center',
-        alignItems: 'center'
-    },
-
-    bodyTitle: {
-        ...fontStyles.header2,
-        fontSize: hp('2.5%')
-    },
-
-    header: {
-        flexDirection: 'column',
-        justifyContent: 'center',
-        height: hp("8%"),
+        borderTopRightRadius: Size.SIZE_20
     },
 
     headerTitle: {
         ...fontStyles.header,
         color: Colors.white,
-        paddingBottom: hp("10%"),
         fontSize: hp("5%"),
         alignSelf: 'center',
     },
 
-    backBtnContainer: {
-        height: hp('3%'),
-        marginTop: hp('5%'),
-        marginLeft: wp('3%')
-    },
-
-    backLabel: {
-        flexDirection: 'row'
-    },
-
-    link: {
-        ...fontStyles.link,
-        color: Colors.white
+    bodyTitle: {
+        ...fontStyles.header2,
+        fontSize: hp('2.5%')
     },
 })

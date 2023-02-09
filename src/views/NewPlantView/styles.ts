@@ -28,14 +28,13 @@ export const styles = StyleSheet.create({
     header: {
         flexDirection: 'column',
         justifyContent: 'center',
-        height: hp("15%"),
+        height: hp("13%"),
         marginTop: hp("3%"),
     },
     headerTitle: {
         ...fontStyles.header,
         color: Colors.white,
-        paddingBottom: hp("3%"),
-        fontSize: hp("4%"),
+        fontSize: hp("5%"),
         alignSelf: 'center',
     },
     cancelBtnContainer: {
