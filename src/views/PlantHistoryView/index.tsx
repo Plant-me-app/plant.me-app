@@ -1,14 +1,15 @@
-import React, { useEffect } from "react";
+import React, { useContext } from "react";
 import { useNavigation } from "@react-navigation/native";
 import { Text, TouchableOpacity, View } from "react-native";
 import { MaterialIcons } from "@expo/vector-icons";
 import { styles } from "./styles";
 import { Colors } from "../../configs/colors";
 import { Labels } from "../../constants/label.constants";
+import { PlantContext } from "../../contexts/PlantContext";
 
 const PlantHistoryView = (): React.ReactElement => {
   const navigation = useNavigation();
-  useEffect(() => {});
+  const { plantContext } = useContext(PlantContext);
 
   const onBack = () => {
     navigation.goBack();
@@ -23,10 +24,10 @@ const PlantHistoryView = (): React.ReactElement => {
         </TouchableOpacity>
       </View>
       <View style={styles.header}>
-        <Text style={styles.headerTitle}>Juninha</Text>
+        <Text style={styles.headerTitle}>{plantContext.name}</Text>
       </View>
       <View style={styles.body}>
-        <Text style={styles.bodyTitle}>Histórico</Text>
+        <Text style={styles.bodyTitle}>{Labels.history}</Text>
       </View>
     </View>
   );
