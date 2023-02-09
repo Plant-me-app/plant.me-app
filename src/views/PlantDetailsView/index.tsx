@@ -30,7 +30,7 @@ import { PlantContext } from "../../contexts/PlantContext";
 const editIcon = require("../../assets/images/Details/Edit.png");
 const infoIcon = require("../../assets/images/Details/Info.png");
 
-const PlantDetails = ({ navigation, route }): React.ReactElement => {
+const PlantDetailsView = ({ navigation, route }): React.ReactElement => {
   const { plant } = route?.params;
   const [modalInfo, setModalInfo] = useState(false);
   const [modalLevel, setModalLevel] = useState(false);
@@ -285,4 +285,4 @@ const PlantDetails = ({ navigation, route }): React.ReactElement => {
   );
 };
 
-export default PlantDetails;
+export default PlantDetailsView;

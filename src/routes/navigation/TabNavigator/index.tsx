@@ -12,7 +12,7 @@ import NewPlantView from "../../../views/NewPlantView";
 import NotificationView from "../../../views/NotificationsView";
 import ProfileView from "../../../views/ProfileView";
 import LeafButton from "../../../components/LeafButton";
-import PlantDetails from "../../../views/PlantDetails";
+import PlantDetailsView from "../../../views/PlantDetailsView";
 import PlantHistoryView from "../../../views/PlantHistoryView";
 import TaskHistory from "../../../views/PlantHistoryView/TaskHistory";
 import { PlantContextProvider } from "../../../contexts/PlantContext";
@@ -66,7 +66,7 @@ function HomeStackScreen() {
     <PlantContextProvider>
       <HomeStack.Navigator screenOptions={{ headerShown: false }}>
         <HomeStack.Screen name="HomeView" component={HomeView} />
-        <HomeStack.Screen name="PlantDetails" component={PlantDetails} />
+        <HomeStack.Screen name="PlantDetails" component={PlantDetailsView} />
         <HomeStack.Screen name="EditPlant" component={NewPlantView} />
         <HomeStack.Screen name="PlantHistory" component={HistoryTopTabScreen} />
       </HomeStack.Navigator>
