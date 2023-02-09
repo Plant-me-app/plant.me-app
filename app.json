@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "plant.me-app",
-    "slug": "plant.me-app",
+    "slug": "plant-me",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -18,7 +18,8 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.lucianaribeiro.plantme"
     },
     "android": {
       "adaptiveIcon": {
@@ -28,6 +29,12 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "extra": {
+      "eas": {
+        "projectId": "15cef1dc-6044-4795-99f1-c68e0a0c0f4c"
+      }
+    },
+    "owner": "lucianaribeiro"
   }
 }
