@@ -30,6 +30,7 @@ export const Labels = {
     editProfile: 'Editar Perfil',
     configs: 'Configurações',
     exit: 'Sair da Conta',
+    notifications: "Notificações",
     splashScreenNext: 'Continuar',
     splashScreenDone: 'Vamos Começar!',
     splashScreenSkip: 'Pular',
@@ -39,4 +40,5 @@ export const Labels = {
     splashScreenText2: 'Elas chegaram para aterrorizar a vida das plantinhas e destruir os jardins da vizinhança!',
     splashScreenTitle3: 'Os cuidados',
     splashScreenText3: 'Mas nem tudo está perdido! Basta manter as plantinhas com os cuidados em dia, regando e adubando quando necessário!',
+    noPlantFound: 'Nenhuma planta encontrada'
 }
