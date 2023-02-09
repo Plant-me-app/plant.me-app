@@ -70,5 +70,17 @@ export const styles = StyleSheet.create({
         borderBottomWidth: hp('0.1%'),
         borderBottomColor: Colors.grey,
         paddingTop: hp('2%')
+    },
+    buildImage: {
+        width: wp('30%'),
+        height: wp('30%')
+    },
+    buildText: {
+        ...fontStyles.modal,
+        color: Colors.green_hunter
+    },
+    buildContainer: {
+        justifyContent: 'center',
+        alignItems: 'center'
     }
 })
