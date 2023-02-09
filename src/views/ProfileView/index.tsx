@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Image, Text, View } from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
+import Modal from "../../components/Modal";
 import { Labels } from "../../constants/label.constants";
 import { loadUser } from "../../services/user.service";
 import { styles } from "./styles";
@@ -10,9 +11,11 @@ const achievementsIcon = require("../../assets/images/Profile/AchievementsIcon.p
 const EditIcon = require("../../assets/images/Profile/EditIcon.png");
 const ConfigIcon = require("../../assets/images/Profile/ConfigIcon.png");
 const ExitIcon = require("../../assets/images/Profile/ExitIcon.png");
+const BuildImage = require("../../assets/images/Build.png");
 
 const ProfileView = ({ navigation }): React.ReactElement => {
   const [user, setUser] = useState([]);
+  const [openModal, setOpenModal] = useState(false);
 
   useEffect(() => {
     const loadWhenNavigate = navigation.addListener("focus", () => {
@@ -29,7 +32,10 @@ const ProfileView = ({ navigation }): React.ReactElement => {
 
   const Menu = (title, icon) => {
     return (
-      <TouchableOpacity style={styles.menuContainer}>
+      <TouchableOpacity
+        style={styles.menuContainer}
+        onPress={() => setOpenModal(true)}
+      >
         <Text style={styles.menuTitle}>{title}</Text>
         <Image style={styles.menuIcon} source={icon} />
       </TouchableOpacity>
@@ -60,6 +66,16 @@ const ProfileView = ({ navigation }): React.ReactElement => {
               <View style={styles.line} />
               <View>{Menu(Labels.exit, ExitIcon)}</View>
             </View>
+            <Modal
+              visible={openModal}
+              handleOpen={() => setOpenModal(true)}
+              handleClose={() => setOpenModal(false)}
+            >
+              <View style={styles.buildContainer}>
+                <Image source={BuildImage} style={styles.buildImage} />
+                <Text style={styles.buildText}>Em construção</Text>
+              </View>
+            </Modal>
           </>
         )}
       </View>
